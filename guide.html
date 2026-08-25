@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新手指南与常见问题 FAQ | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link active">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>📖 SURVIVAL HANDBOOK & FAQ</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                新手百科与 <span class="gradient-text squiggly-word">高频疑难解答 (FAQ)</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                从进服第一分钟到成为冠军，所有你需要掌握的生存诀窍与避坑知识全收录。
+            </p>
+        </div>
+
+        <!-- Section 1: Golden Rules -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">MUST READ RULES</span>
+                <h2 class="section-title"><span class="icon">💡</span> 傻鸟服四大黄金法则</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">1. 御三家选择建议</h4>
+                    <p class="feature-desc">
+                        开局选择御三家时，<strong>尽量避开丰缘三家</strong>（火稚鸡、草苗龟、水跃鱼）。因为进入剧情地图后你将能够直接免费领取一套丰缘御三家，把初始机会留给其他世代更划算！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px; font-size:1.1rem;">2. 死亡不掉落设置</h4>
+                    <p class="feature-desc">
+                        服务器开启了 <strong>KeepInventory（死亡不掉落）</strong>，宝可梦也不会因濒死降低亲密度。请放心深入危险矿洞、熔岩区或挑战高难对战塔！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px; font-size:1.1rem;">3. 剧情世界箱子必搜</h4>
+                    <p class="feature-desc">
+                        拿到传送手册进入剧情世界后，每路过一个城镇或道馆都要仔细翻找箱子，每个小镇箱子送 <strong>手办 A x10 + 手办 B x10</strong>，前期 5 分钟就能攒出数张抽奖券！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:#2ed573; margin-bottom:8px; font-size:1.1rem;">4. 科技生活：Tom's 简易无线存储</h4>
+                    <p class="feature-desc">
+                        服务器安装了 <code>Tom's Simple Storage</code> 模组。在基地安装存储终端与无线收发器，即可在一个界面管理所有箱子物资，打造整洁舒适的家园。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Interactive FAQ Accordion -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">SEARCHABLE FAQ DATABASE</span>
+                <h2 class="section-title"><span class="icon">❓</span> 常见问题实时检索库</h2>
+                <p class="section-desc">输入关键字（如：手办、御三家、雷达、指令、手机）即时过滤问题。</p>
+            </div>
+
+            <input type="text" id="faqSearchInput" class="faq-search-box" placeholder="🔍 输入问题关键字实时搜索（例如：手办、转盘、覆盖、手机）...">
+
+            <div class="faq-list">
+                <div class="faq-item open">
+                    <div class="faq-header">
+                        <span>Q1: 为什么我在剧情世界领取御三家时宝可梦没了？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>这是剧情地图自带脚本机制导致的。在剧情世界触发领取御三家事件时，系统会覆盖当前的队伍数据。<br>
+                        <strong>解决方式：</strong>在前往剧情世界前，务必输入 <code>/poketoitem</code> 将现有宝可梦转化为背包物品，确保身上槽位清空后再去领取剧情御三家。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q2: 跨世界传输宝可梦具体怎么操作？会掉个体值/努力值吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>绝对不会丢失任何数据！<br>
+                        1. 离开当前世界前输入 <code>/poketoitem</code>，宝可梦变成精灵球物品存入背包。<br>
+                        2. 传送至新世界后输入 <code>/itemtopoke</code>，即可原原本本释放出来。<br>
+                        包括等级、性格、个体值(IVs)、努力值(EVs)、配招、异色闪光全部完美保留。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q3: 抽奖券怎么获得最快？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>最快路径有三条：<br>
+                        1. <strong>跑图开荒：</strong>去丰缘剧情世界的小镇开补给箱，每个箱子给 10x 手办A 和 10x 手办B。<br>
+                        2. <strong>日常刷任务：</strong>每人 3 个专属任务，挑简单的做，不喜欢的随时按 200 秒冷却刷新。<br>
+                        3. <strong>对战塔爬塔：</strong>3 BP 换 5 个自选手办，定向补齐紧缺的手办 A 或 B。<br>
+                        集齐 2 个手办 A + 2 个手办 B 到大厅村民处兑换 1 张抽奖券。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q4: 为什么大转盘只放在出生大厅？玩家能带走吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>转盘内容纯随机，为了保证全服公平，防止玩家拆下转盘无限放地上重置刷金色 OP 奖项，转盘被严格固定在出生大厅的 8 个指定展位，不可被破坏或带走。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q5: 智能手机 (Smartphone) 值得优先兑换吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>绝对物超所值，强烈建议作为第一追求目标！它集成了野外随时随地全队回血治疗、远程打开 PC 仓库、区域生成雷达等神级功能，能极大提升开荒与抓宠效率。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q6: 狩猎公园 (CobbleSafari) 怎么玩？需要门票吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>每日免费入场！公园内全天常驻 2 倍闪光概率加成，并且按水、火、草、电等属性严格划分生态区。天空中还会随机飘过热气球空投补给箱，是每天必去的抓宠胜地。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q7: 怎么召唤神兽？神兽雷达在剧情世界能用吗？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>通过抽奖获得或合成线制作出「传说雷达」后，右键雷达会共鸣指向神兽的栖息地坐标。到达坐标后右键召唤神兽降临。<strong>注意：请在生存资源区使用雷达</strong>，剧情世界因冒险模式和空气墙保护可能无法生成神兽祭坛。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q8: 我开箱子会不会被其他玩家抢光？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>完全不用担心！服务器安装了 <code>Lootr</code> 独立宝箱模组，世界里的每一个天然宝箱对于每个玩家都是独立可开的，人人都有属于自己的一份战利品。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>

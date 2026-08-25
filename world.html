@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界探索与跨维度指南 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link active">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>🗺️ WORLDS & DIMENSION TRAVEL</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                多元世界版图与 <span class="gradient-text squiggly-word">跨维度安全同步</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                出生大厅、丰缘剧情冒险界、CobbleSafari 狩猎世界三大维度全面解析。
+            </p>
+        </div>
+
+        <!-- Section 1: CRITICAL HAZARD WARNING -->
+        <div class="callout callout-danger" style="border-width:2px; box-shadow: 0 0 25px rgba(255,71,87,0.3);">
+            <div class="callout-icon" style="font-size:2rem;">🚨</div>
+            <div class="callout-content">
+                <div class="callout-title" style="font-size:1.25rem;">【最高优先级警告】剧情世界领取御三家避坑守则</div>
+                <p style="font-size:0.98rem; margin-top:8px; line-height:1.7;">
+                    在丰缘剧情世界中，系统会触发原版《红蓝宝石》的剧情御三家领取脚本。<br>
+                    <strong>特别注意：在剧情世界领取御三家时，身上切勿携带任何实体宝可梦！</strong><br>
+                    若你身上有已带的宝可梦，领取剧情御三家的脚本会直接将其<strong>覆盖清除</strong>！<br>
+                    <span style="color:#fff; font-weight:700;">正确做法：</span>在前往剧情世界前，使用 <code>/poketoitem</code> 将所有宝可梦转化为背包物品，确保左侧宝可梦槽位为空，然后再去触发剧情领取！
+                </p>
+            </div>
+        </div>
+
+        <!-- Section 2: Dimension Sync Instructions -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">CROSS-DIMENSION PROTOCOL</span>
+                <h2 class="section-title"><span class="icon">🔄</span> 宝可梦跨世界传输教学 (PokemonToItem)</h2>
+                <p class="section-desc">
+                    服务器中各大世界（大厅/剧情/生存/狩猎）物品背包完全互通，但底层宝可梦实体数据独立隔离。通过专属指令即可无损搬运你的爱宠！
+                </p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 20px;">
+                <div class="feature-card">
+                    <h3 style="color:var(--accent-cyan); margin-bottom:12px;">Step 1: 离开当前世界前 (封印为物品)</h3>
+                    <p class="feature-desc">在原世界中打开聊天栏输入以下指令，你的当前宝可梦将被完美封印为物品形式放入背包：</p>
+                    <div class="cmd-box">
+                        <code>/poketoitem</code>
+                        <button class="cmd-copy" onclick="copyCommand('/poketoitem')">点击复制</button>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-dim); margin-top:8px;">
+                        💡 放心使用：等级、个体值(IVs)、努力值(EVs)、配招、性格、亲密度、异色闪光等数据均 100% 原样保留。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h3 style="color:var(--green); margin-bottom:12px;">Step 2: 到达新世界后 (释放为宝可梦)</h3>
+                    <p class="feature-desc">通过传送手册或传送门到达目的地后，输入以下指令将物品恢复为队伍宝可梦：</p>
+                    <div class="cmd-box">
+                        <code>/itemtopoke</code>
+                        <button class="cmd-copy" onclick="copyCommand('/itemtopoke')">点击复制</button>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--text-dim); margin-top:8px;">
+                        💡 快捷提示：到达剧情世界或生存世界后随时可释放，无需担心数据丢失。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Hoenn Story Map -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">STORY ADVENTURE WORLD</span>
+                <h2 class="section-title"><span class="icon">🗺️</span> 丰缘地区剧情世界 (红宝石 / 蓝宝石)</h2>
+                <p class="section-desc">
+                    精心移植的《精灵宝可梦：红/蓝宝石》RPG 冒险地图，为玩家提供沉浸式掌机剧情体验。
+                </p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 20px;">
+                <div class="feature-card cyan">
+                    <div class="feature-icon">📖</div>
+                    <h3 class="feature-title">如何进入剧情世界</h3>
+                    <p class="feature-desc">
+                        在出生大厅寻找传送向导村民，购买 <strong>《丰缘传送手册》</strong>。右键阅读即可瞬间传送至丰缘地区的未白镇起点。
+                    </p>
+                </div>
+
+                <div class="feature-card gold">
+                    <div class="feature-icon">🎁</div>
+                    <h3 class="feature-title">每个小镇的隐藏宝藏！</h3>
+                    <p class="feature-desc">
+                        <strong>超强福利：</strong>探索剧情地图上的每个小城镇与道馆据点，都能在角落找到专属补给箱，每个箱子必定包含 <strong>手办 A x10 + 手办 B x10</strong>！前期起飞必搜！
+                    </p>
+                </div>
+
+                <div class="feature-card purple">
+                    <div class="feature-icon">🧱</div>
+                    <h3 class="feature-title">冒险模式与空气墙机制</h3>
+                    <p class="feature-desc">
+                        剧情世界锁定为<strong>冒险模式</strong>（禁止破坏方块建房）。水域、岩石等通道设有空气墙障碍，需要按照剧情逐步解锁冲浪、怪力等秘传技方可通过。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: CobbleSafari Hunting World -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">HUNTING & SHINY PARADISE</span>
+                <h2 class="section-title"><span class="icon">🐯</span> CobbleSafari 狩猎世界</h2>
+                <p class="section-desc">
+                    专为捕捉、定向刷怪与追闪设计的独立狩猎原野，每天都值得进去搜刮一圈！
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px; font-size:1.1rem;">🎈 热气球空投补给箱 (Air Drops)</h4>
+                    <p class="feature-desc">
+                        狩猎世界上空定时有热气球飞过并向地面投掷空投补给包！内含高级球、神奇糖果、特训补剂及大量手办代币，抬头看天抢空投吧！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">✨ 200% 常驻闪光概率翻倍</h4>
+                    <p class="feature-desc">
+                        整个狩猎世界常驻 <strong>2倍闪光概率加成</strong>，若配合抽奖获得的闪光香薰或闪光护符，闪光宝可梦的出率将大幅飙升！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px; font-size:1.1rem;">🌲 18 大属性生态专区</h4>
+                    <p class="feature-desc">
+                        狩猎公园按属性严谨划分区域：水生群岛、熔岩火山、常青林海、幽灵古堡等。想抓指定属性队伍直接前往对应分区即可。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:#2ed573; margin-bottom:8px; font-size:1.1rem;">📦 全服 Lootr 独立宝箱保护</h4>
+                    <p class="feature-desc">
+                        全服集成 <code>Lootr</code> 模组。世界各地自然生成的战利品箱对每个玩家都是<strong>独立战利品</strong>，无需担心宝箱被前人捷足先登搜空！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>

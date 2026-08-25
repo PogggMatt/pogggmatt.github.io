@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大转盘与抽卡养成系统 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link active">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>🎰 GACHA & ECONOMY SYSTEM</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                大转盘抽卡与 <span class="gradient-text squiggly-word">二游式养成循环</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                公开透明的 28270 面大转盘、爽快的开箱动画与零氪肝卷闭环，让变强之路充满惊喜。
+            </p>
+        </div>
+
+        <!-- Section 1: Probability Display -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">OFFICIAL PROBABILITIES</span>
+                <h2 class="section-title"><span class="icon">📊</span> 大转盘三档概率公示</h2>
+                <p class="section-desc">
+                    转盘基于 <code>Wacky Wheel</code> 深度定制。出生大厅固定安置 <strong>8 台大转盘</strong>（不可被玩家挪走或重置，杜绝利用机制刷初始，保障绝对公平）。
+                </p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 24px;">
+                <div class="feature-card gold">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <span class="rate-badge rate-gold">OP 顶级金池</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:var(--gold);">0.35%</span>
+                    </div>
+                    <p style="color:var(--gold); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：99 / 28270</p>
+                    <p class="feature-desc">
+                        包含全服最核心战略物资：<strong>大师球</strong>、<strong>传说宝可梦雷达</strong>、<strong>金色王冠</strong>、神话觉醒石、极品特性膏药等。一发入魂直接改变战局！
+                    </p>
+                </div>
+
+                <div class="feature-card purple">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <span class="rate-badge rate-purple">厉害 进阶紫池</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:var(--purple);">2.16%</span>
+                    </div>
+                    <p style="color:var(--purple); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：610 / 28270</p>
+                    <p class="feature-desc">
+                        战力进阶必备：<strong>高级球组</strong>、<strong>全套属性进化石</strong>、<strong>银色王冠</strong>、极巨腕带、对战携带道具、神奇糖果组。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                        <span class="rate-badge rate-white">普通 基础白池</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:#ced6e0;">97.49%</span>
+                    </div>
+                    <p style="color:var(--text-dim); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：27560 / 28270</p>
+                    <p class="feature-desc">
+                        日常生存探险补给：各种精灵球、超级球、高级树果、全满药水、战斗强化药剂、宝可梦高级料理食材。
+                    </p>
+                </div>
+            </div>
+
+            <!-- GachaAddiction Hotkeys Callout -->
+            <div class="callout callout-info">
+                <div class="callout-icon">✨</div>
+                <div class="callout-content">
+                    <div class="callout-title">GachaAddiction 模组快捷键小贴士</div>
+                    <p style="font-size:0.95rem; margin-top:4px;">
+                        抽奖启动时将播放 3D 沉浸式开箱动画。如果想快速查看结果：<br>
+                        • 按下 <kbd style="background:#222; border:1px solid #555; padding:2px 6px; border-radius:4px;">空格键 (Space)</kbd> ：加速开箱动画。<br>
+                        • 按下 <kbd style="background:#222; border:1px solid #555; padding:2px 6px; border-radius:4px;">ESC 键</kbd> ：瞬间跳过动画直接获得奖品。<br>
+                        • 服务器为友好纯净 SMP，抽奖<strong>无全服公告刷屏</strong>，请安心享受你的专属开箱时刻！
+                    </p>
+                </div>
+            </div>
+
+            <!-- Interactive Gacha Simulator -->
+            <div class="sim-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+                    <div>
+                        <h4 style="color:#fff; font-size:1.1rem;">🎲 线上转盘模拟器 (实时概率测试)</h4>
+                        <p style="color:var(--text-dim); font-size:0.85rem;">严格按照服务器 99/610/27560 权重算法生成结果（金1面/紫2面/白20面）</p>
+                    </div>
+                    <div style="font-size:0.88rem; color:var(--text-muted);">
+                        已抽: <span id="statTotal" style="color:#fff; font-weight:700;">0</span> | 
+                        金: <span id="statGold" style="color:var(--gold); font-weight:700;">0</span> | 
+                        紫: <span id="statPurple" style="color:var(--purple); font-weight:700;">0</span> | 
+                        白: <span id="statWhite" style="color:#ced6e0; font-weight:700;">0</span>
+                    </div>
+                </div>
+
+                <div class="sim-controls">
+                    <button class="btn btn-primary" style="padding:8px 18px; font-size:0.9rem;" onclick="simRoll(1)">单抽 (1抽)</button>
+                    <button class="btn btn-glass" style="padding:8px 18px; font-size:0.9rem;" onclick="simRoll(10)">十连抽 (10抽)</button>
+                    <button class="btn btn-glass" style="padding:8px 18px; font-size:0.9rem;" onclick="simRoll(50)">大保底模拟 (50抽)</button>
+                    <button class="btn btn-glass" style="padding:8px 18px; font-size:0.9rem; color:#ff4757;" onclick="resetSim()">重置数据</button>
+                </div>
+
+                <div class="sim-results" id="simResults">
+                    <span style="color: var(--text-dim);">点击上方按钮模拟开箱，测试你的欧皇血统！</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Task & Token Economy -->
+        <div class="glass-panel" id="exchange" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">TOKEN & QUEST FLOW</span>
+                <h2 class="section-title"><span class="icon">📜</span> 抽奖券获取全途径：手办与代币经济</h2>
+                <p class="section-desc">
+                    在本服，你无需花费任何现实货币，所有抽奖券均可通过游戏内日常玩法肝出来。
+                </p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 24px;">
+                <div class="feature-card">
+                    <h3 style="color:var(--accent-cyan); margin-bottom:10px;">📋 个人专属任务系统</h3>
+                    <ul style="color:var(--text-muted); font-size:0.95rem; line-height:1.8; padding-left:18px;">
+                        <li>每个玩家同时拥有 <strong>3 个专属任务</strong>（捕捉、击败、采集等）。</li>
+                        <li><strong>随时刷新机制：</strong> 对当前任务不满意？随时点击刷新！单次刷新冷却时间仅需 <strong>200 秒</strong>。</li>
+                        <li><strong>丰厚收益：</strong> 每完成 1 个任务，稳定掉落 <strong>3 ~ 5 个手办 A 或手办 B</strong>。</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h3 style="color:var(--purple); margin-bottom:10px;">🏆 对战塔爬塔 (Battle Tower)</h3>
+                    <ul style="color:var(--text-muted); font-size:0.95rem; line-height:1.8; padding-left:18px;">
+                        <li>挑战对战塔检验队伍硬实力。</li>
+                        <li>每战胜一层，奖励 <strong>1 BP (Battle Point)</strong>。</li>
+                        <li><strong>BP 兑换通道：</strong> 消耗 <strong>3 BP</strong> 即可直接兑换 <strong>自选手办 x5</strong>（可自选手办 A 或手办 B）。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="wiki-table">
+                    <thead>
+                        <tr>
+                            <th>兑换项目</th>
+                            <th>所需材料与代币</th>
+                            <th>兑换 NPC 位置</th>
+                            <th>核心作用</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color:var(--gold);">🎟️ 大转盘抽奖券</strong></td>
+                            <td>手办 A x2 + 手办 B x2</td>
+                            <td>出生大厅转盘旁专属村民</td>
+                            <td>用于在 8 台大转盘中抽取顶级物资</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--accent-cyan);">📱 智能手机 (Smartphone)</strong></td>
+                            <td>手办组合兑换（超高性价比）</td>
+                            <td>出生大厅专属兑换村民</td>
+                            <td><strong>全服最强神器！</strong> 随地治疗机、远程无线 PC</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:var(--purple);">📦 自选手办 x5</strong></td>
+                            <td>3 BP (对战塔积分)</td>
+                            <td>对战塔大厅奖励兑换员</td>
+                            <td>自由平衡手办 A 与 B 数量，加速合成抽奖券</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color:#2ed573;">🗺️ 丰缘传送手册</strong></td>
+                            <td>基础金币 / 冒险代币</td>
+                            <td>出生大厅传送向导村民</td>
+                            <td>开启前往经典红蓝宝石剧情世界的大门</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Token Exchange Calculator Widget -->
+            <div class="sim-box" style="margin-top:20px;">
+                <h4 style="color:#fff; margin-bottom:12px;">🧮 肝卷收益智能计算器</h4>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:14px;">
+                    <div>
+                        <label style="font-size:0.85rem; color:var(--text-muted);">计划完成任务数：</label>
+                        <input type="number" id="calcTasks" value="5" min="0" style="width:100%; padding:10px; background:#0a0c12; border:1px solid var(--border-subtle); color:#fff; border-radius:6px; margin-top:4px;" oninput="calculateExchange()">
+                    </div>
+                    <div>
+                        <label style="font-size:0.85rem; color:var(--text-muted);">计划赚取 BP 积分：</label>
+                        <input type="number" id="calcBP" value="6" min="0" style="width:100%; padding:10px; background:#0a0c12; border:1px solid var(--border-subtle); color:#fff; border-radius:6px; margin-top:4px;" oninput="calculateExchange()">
+                    </div>
+                </div>
+
+                <div style="background:#090b10; padding:14px 20px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-around; flex-wrap:wrap; gap:10px;">
+                    <div>预计获得手办总数：<strong id="calcResFigures" style="color:var(--gold);">30 个 (约)</strong></div>
+                    <div>预计可兑换抽奖券：<strong id="calcResTickets" style="color:var(--primary);">7 张 抽奖券</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Smartphone Guide -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">MUST-HAVE ITEM</span>
+                <h2 class="section-title"><span class="icon">📱</span> 终极神器：智能手机 (Smartphone) 解析</h2>
+            </div>
+            <p style="color:var(--text-muted); font-size:1rem; margin-bottom:20px;">
+                在 <code>cobblemon_smartphone</code> 模组支持下，智能手机是每位训练家步入中后期的质变核心。建议在攒够第一批手办后，<strong>第一时间兑换智能手机</strong>。
+            </p>
+
+            <div class="grid-3">
+                <div class="feature-card">
+                    <h4 style="color:var(--green); margin-bottom:8px;">🏥 随身宝可梦治疗</h4>
+                    <p class="feature-desc">无论身处险恶洞窟还是深海，右键手机即可一键回满全队体力与 PP，彻底告别频繁回程。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px;">💻 远程访问 PC 箱子</h4>
+                    <p class="feature-desc">在野外抓到心仪的宝可梦或需要调整对战阵容时，随时随地打开 PC 仓库自由存取换怪。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--purple); margin-bottom:8px;">🧭 区域图鉴与定位</h4>
+                    <p class="feature-desc">内置雷达定位与当前生态群系图鉴，清晰显示当前区域可能出没的所有宝可梦及生成条件。</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>

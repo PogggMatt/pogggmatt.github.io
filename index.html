@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傻鸟宝可梦 SMP | Cobbleverse 官方维基与玩家指南</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero -->
+    <section class="hero-section">
+            <div class="hero-pill">
+                <span class="pulse-dot"></span>
+                <span>Cobbleverse 深度魔改 • 朋友联机二游养成闭环</span>
+            </div>
+
+            <h1 class="hero-title">
+                纯粹我的<span class="squiggly-word">宝可梦</span>世界<br>
+                生存SMP魔改COBBLEVERSE独特体验
+            </h1>
+
+            <p class="hero-subtitle">
+                以 Cobbleverse 为基底，围绕 <strong>『肝卷 → 抽卡 → 变强』</strong> 打造。<br>
+                从大厅转盘到丰缘剧情，每一天都有新目标。
+            </p>
+
+                    </section>
+
+    <main class="main-wrapper">
+        <div class="hero-actions">
+                <a href="tutorial.html" class="btn btn-primary">🛠️ 安装教程 · 从零进服</a>
+                <a href="https://www.lumyverse.com/en/cobbleverse/lumymon/" target="_blank" rel="noopener" class="btn btn-glass">🧬 LumyMon 官方 Wiki</a>
+            </div>
+
+        <!-- Core Loops & Highlights -->
+        <div class="grid-3" style="margin: 40px 0 80px;">
+            <div class="feature-card gold">
+                <div class="feature-icon"><img src="Wheel_icon.png" alt="转盘"></div>
+                <h3 class="feature-title">二游三档转盘 (Wacky Wheel)</h3>
+                <p class="feature-desc">
+                    大厅独家设立 8 台不可破坏转盘，包含 OP(0.35%)、厉害(2.16%)、普通(97.49%) 三档公开透明奖池。大师球、神兽雷达、金皇冠全由你一手抽出来！
+                </p>
+                <a href="gacha.html" style="color:var(--gold); font-weight:700; text-decoration:none; margin-top:14px; display:inline-block;">查看奖池细节 →</a>
+            </div>
+
+            <div class="feature-card cyan">
+                <div class="feature-icon"><img src="Battle_Tower_icon.png" alt="对战塔"></div>
+                <h3 class="feature-title">全自由肝卷机制 (Tasks & BP)</h3>
+                <p class="feature-desc">
+                    拒绝无聊日常！每人拥有 3 个随时可刷新的专属任务（冷却 200 秒），通关对战塔更能累积 BP，手办自由兑换，零氪也能抽个爽。
+                </p>
+                <a href="gacha.html#exchange" style="color:var(--accent-cyan); font-weight:700; text-decoration:none; margin-top:14px; display:inline-block;">计算兑换收益 →</a>
+            </div>
+
+            <div class="feature-card purple">
+                <div class="feature-icon">🗺️</div>
+                <h3 class="feature-title">红蓝宝石剧情世界 (Hoenn)</h3>
+                <p class="feature-desc">
+                    经典丰缘冒险模式地图，探索小镇角落免费拾取海量手办！配合指令安全跨维度传输宝可梦，重温原汁原味的掌机冒险。
+                </p>
+                <a href="world.html" style="color:var(--purple); font-weight:700; text-decoration:none; margin-top:14px; display:inline-block;">学习跨界指令 →</a>
+            </div>
+        </div>
+
+        <!-- Parallax Gallery (Aceternity Parallax Blocks) -->
+        <section class="content-section parallax-gallery">
+            <div class="section-header">
+                <span class="section-tag">GALLERY</span>
+                <h2 class="section-title"><span class="icon">🖼️</span> 走进傻鸟世界</h2>
+                <p class="section-desc">大厅、转盘、剧情地图——一屏一景，滚动感受每片土地。</p>
+            </div>
+                        <div class="parallax-block" style="background-image:url('Parallax_Blocks/gameplay.png');">
+                <div class="parallax-caption">
+                    <h3>沉浸式宝可梦世界</h3>
+                    <p>从出生大厅出发，每一步都是新的冒险。</p>
+                </div>
+            </div>
+            <div class="parallax-block" style="background-image:url('Parallax_Blocks/pokedex_scanning.png');">
+                <div class="parallax-caption">
+                    <h3>扫描与捕捉</h3>
+                    <p>图鉴扫描、捕捉判定一目了然，抓宠更从容。</p>
+                </div>
+            </div>
+            <div class="parallax-block" style="background-image:url('Parallax_Blocks/charizard.png');">
+                <div class="parallax-caption">
+                    <h3>巅峰对战</h3>
+                    <p>Mega 进化、Z 招式、极巨巢穴团战，构筑冠军阵容。</p>
+                </div>
+            </div>
+            <div class="parallax-block" style="background-image:url('Parallax_Blocks/fossil_revival.png');">
+                <div class="parallax-caption">
+                    <h3>化石复活实验室</h3>
+                    <p>挖出远古化石，唤醒沉睡的古代宝可梦。</p>
+                </div>
+            </div>
+            <div class="parallax-block" style="background-image:url('Parallax_Blocks/cooking-png.png');">
+                <div class="parallax-caption">
+                    <h3>宝可梦料理</h3>
+                    <p>CobbleCuisine 料理系统，亲手做一桌大餐。</p>
+                </div>
+            </div>
+            <div class="parallax-block" style="background-image:url('Parallax_Blocks/riding-png.png');">
+                <div class="parallax-caption">
+                    <h3>骑乘与远征</h3>
+                    <p>骑上爱宠驰骋大陆，派遣探险队离线挂机收菜。</p>
+                </div>
+            </div></section>
+
+        <!-- System Overview Panel -->
+        <div class="glass-panel" style="margin-bottom: 40px;">
+            <div class="section-header">
+                <span class="section-tag">SERVER ARCHITECTURE</span>
+                <h2 class="section-title"><span class="icon">⚡</span> 傻鸟服务器特色系统总览</h2>
+                <p class="section-desc">深度集成优质 Fabric 模组群，保障公平、流畅与无限探索深度。</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px; font-size:1.1rem;">🐯 CobbleSafari 狩猎世界</h4>
+                    <p class="feature-desc">
+                        每日免费入场！全地图分为各大属性生态专区，头顶更有热气球随机空投物资，全天常驻<strong>闪光概率翻倍</strong>，追闪党的绝对天堂。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px; font-size:1.1rem;">📡 LumyMon 传说追踪合成线</h4>
+                    <p class="feature-desc">
+                        神兽不再随处乱刷！通过击败特定首领、收集神兽碎片与元素精华合成专用雷达，追踪专属栖息地并在神圣仪式下降临。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">⚔️ 巅峰竞技：Mega / Z / 极巨巢穴</h4>
+                    <p class="feature-desc">
+                        集齐 Mega 手镯、全属性 Z 纯晶，挑战野外极巨化巢穴 Boss 团战，掉落特训道具与海量手办代币，全世代对战阵容任你构筑。
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--green); margin-bottom:8px; font-size:1.1rem;">📱 智能手机与生活质量 (QoL)</h4>
+                    <p class="feature-desc">
+                        手办可兑换核心道具“智能手机”，享受野外随地治疗机与随地 PC 存取！服务器开启<strong>死亡不掉落</strong>，箱子全配 <strong>Lootr</strong> 每人独享一份。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Start Steps -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">QUICK ROADMAP</span>
+                <h2 class="section-title"><span class="icon">🚀</span> 萌新登入 3 步起飞法则</h2>
+            </div>
+
+            <div class="step-track">
+                <div class="step-node">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 style="color:#fff; margin-bottom:6px;">挑选你的初始伙伴（注意避坑）</h4>
+                        <p style="color:var(--text-muted); font-size:0.95rem;">
+                            全世代御三家均可自由选择！<strong>强烈建议初始不要选择丰缘御三家</strong>（火稚鸡、草苗龟、水跃鱼），因为进入剧情世界后将免费再次领取丰缘御三家。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-node">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 style="color:#fff; margin-bottom:6px;">探索出生大厅与接取专属任务</h4>
+                        <p style="color:var(--text-muted); font-size:0.95rem;">
+                            在大厅与任务 NPC 对话，查看你的 3 个专属任务。若任务太难，可立即点击刷新（每次刷新仅需 200 秒冷却），先刷几个简单捕捉任务拿到第一批手办 A/B。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="step-node">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 style="color:#fff; margin-bottom:6px;">兑换第一张抽奖券，转动命运之轮</h4>
+                        <p style="color:var(--text-muted); font-size:0.95rem;">
+                            集齐 2 个手办 A + 2 个手办 B，即可在转盘旁村民处兑换 1 张抽奖券。前往 8 台大转盘前投下奖券，体验开箱瞬间！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>
+
+edit
+Write File
+check
+chevron_right

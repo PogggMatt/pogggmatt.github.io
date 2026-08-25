@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LumyMon传说合成与巅峰对决 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+
+
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link active">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>🧬 LUMYMON & BATTLE ADVANCED</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                LumyMon 传说追踪与 <span class="gradient-text squiggly-word">终极竞技体系</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                神兽雷达合成、栖息地仪式召唤、Mega 超级进化、全属性 Z-招式与极巨化团战。
+            </p>
+        </div>
+
+        <!-- Section 1: LumyMon Legendary System -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">LEGENDARY TRACKING LINE</span>
+                <h2 class="section-title"><span class="icon">📡</span> LumyMon 传说宝可梦追踪与雷达合成</h2>
+                <p class="section-desc">
+                    传说中的宝可梦不再是无脑随机刷脸，而是需要训练家通过研究、合成雷达并前往神圣栖息地进行契约召唤。
+                </p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 20px;">
+                <div class="feature-card gold">
+                    <h3 style="color:var(--gold); margin-bottom:10px;">1. 雷达获取途径</h3>
+                    <p class="feature-desc">
+                        <strong>抽卡获取：</strong>大厅转盘 OP 金池有 0.35% 概率直接产出高级传说雷达。<br>
+                        <strong>肝材料合成：</strong>击败野外霸主或对战塔 Boss 收集「神兽碎片」与「元素核心」，在工作台手动合成追踪雷达。
+                    </p>
+                </div>
+
+                <div class="feature-card cyan">
+                    <h3 style="color:var(--accent-cyan); margin-bottom:10px;">2. 栖息地追踪 (Habitat)</h3>
+                    <p class="feature-desc">
+                        手持雷达右键，雷达会共鸣指向该神兽在世界中的神圣坐标。<br>
+                        <strong>注意：</strong>建议在<strong>生存世界</strong>使用雷达召唤，剧情地图因冒险模式限制可能无法生成召唤祭坛。
+                    </p>
+                </div>
+
+                <div class="feature-card purple">
+                    <h3 style="color:var(--purple); margin-bottom:10px;">3. 降临仪式与对决</h3>
+                    <p class="feature-desc">
+                        抵达坐标后右键激活雷达，天空将变色并伴随雷电粒子特效，传说神兽正式降临！击败或使用大师球进行收服。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Mega Evolution & Z-Moves -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">COMPETITIVE COMBAT</span>
+                <h2 class="section-title"><span class="icon">⚔️</span> 巅峰竞技：Mega 进化、Z-招式与极巨化</h2>
+                <p class="section-desc">全面支持全世代核心战斗对战机制，构筑属于你的冠军级阵容。</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-card">
+                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">💎 Mega 超级进化</h4>
+                    <p class="feature-desc">
+                        • <strong>超级手镯：</strong>佩戴在饰品栏。<br>
+                        • <strong>Mega 进化石：</strong>转盘紫池及对战塔高层稳定产出。<br>
+                        • 战斗中让宝可梦携带专属 Mega 石，点击进化按钮突破种族值上限！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px; font-size:1.1rem;">⚡ Z-招式 (Z-Moves)</h4>
+                    <p class="feature-desc">
+                        • <strong>Z-手环与纯晶：</strong>涵盖 18 种全属性 Z 纯晶及专属 Z 晶石。<br>
+                        • 通过击败剧情世界道馆馆主及野外极巨巢穴收集，一回合释放震撼全场的毁灭打击！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:var(--purple); margin-bottom:8px; font-size:1.1rem;">🟣 极巨巢穴团战 (Dynamax)</h4>
+                    <p class="feature-desc">
+                        • 野外随机刷新紫色极巨能量光柱。<br>
+                        • 组队挑战超巨型 Boss，必定掉落高 IV 宝可梦、极巨糖果以及大量手办 A/B 奖励！
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Fossils & Expeditions -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">EXPLORATION & RESEARCH</span>
+                <h2 class="section-title"><span class="icon">🧪</span> 化石复活实验室与宝可梦探险队</h2>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px; font-size:1.1rem;">⛏️ 化石挖掘与复活 (Fossils Plus)</h4>
+                    <p class="feature-desc">
+                        地下矿洞中蕴藏着古代化石原石，配合 <code>pickaxeminigame</code> 采矿小游戏可精准挖出完整化石。带回研究室的化石复活仪中，即可唤醒菊石兽、始祖大鸟、化石翼龙等远古霸主！
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:#2ed573; margin-bottom:8px; font-size:1.1rem;">🏕️ 宝可梦远征探险 (Cobblemon Expeditions)</h4>
+                    <p class="feature-desc">
+                        电脑（PC）里闲置的宝可梦不再吃灰！通过远征系统派遣多支探险小队前往深林、火山或遗迹探险，离线挂机也能带回珍贵树果、进化石与手办碎片。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=5"></script>
+</body>
+</html>

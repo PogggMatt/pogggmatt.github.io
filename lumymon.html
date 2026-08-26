@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LumyMon传说合成与巅峰对决 | 傻鸟宝可梦 SMP Wiki</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <title>LumyMon 传说宝可梦系统 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -15,8 +15,6 @@
             <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
     </svg>
-
-
     <!-- Navigation Header -->
         <header class="navbar">
         <div class="titlebar">
@@ -33,7 +31,7 @@
         </div>
         <div class="menubar">
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link active">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link active">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
             </ul>
             <div class="nav-action">
                 <button class="btn-ip-copy" onclick="copyServerIP()">
@@ -47,109 +45,139 @@
     </header>
 
     <main class="main-wrapper">
-        <div class="hero-section" style="padding: 30px 0 20px;">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
             <div class="hero-pill">
-                <span>🧬 LUMYMON & BATTLE ADVANCED</span>
+                <span>🧬 LUMYMON LEGENDARY SYSTEM</span>
             </div>
             <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
-                LumyMon 传说追踪与 <span class="gradient-text squiggly-word">终极竞技体系</span>
+                LumyMon <span class="gradient-text squiggly-word">传说追踪与祭坛召唤</span>
             </h1>
             <p class="hero-subtitle" style="margin-bottom: 20px;">
-                神兽雷达合成、栖息地仪式召唤、Mega 超级进化、全属性 Z-招式与极巨化团战。
+                Lumyverse 官方为 COBBLEVERSE 整合包量身打造的传说宝可梦增强模组（v0.6.6），让传说与幻之宝可梦的获取变成一场有目标、有仪式感的完整冒险。
             </p>
         </div>
 
-        <!-- Section 1: LumyMon Legendary System -->
+        <!-- 模组简介 -->
         <div class="glass-panel" style="margin-bottom: 30px;">
             <div class="section-header">
-                <span class="section-tag">LEGENDARY TRACKING LINE</span>
-                <h2 class="section-title"><span class="icon">📡</span> LumyMon 传说宝可梦追踪与雷达合成</h2>
-                <p class="section-desc">
-                    传说中的宝可梦不再是无脑随机刷脸，而是需要训练家通过研究、合成雷达并前往神圣栖息地进行契约召唤。
-                </p>
+                <span class="section-tag">ABOUT THE MOD</span>
+                <h2 class="section-title"><span class="icon">🧬</span> 什么是 LumyMon？</h2>
             </div>
-
-            <div class="grid-3" style="margin-bottom: 20px;">
-                <div class="feature-card gold">
-                    <h3 style="color:var(--gold); margin-bottom:10px;">1. 雷达获取途径</h3>
-                    <p class="feature-desc">
-                        <strong>抽卡获取：</strong>大厅转盘 OP 金池有 0.35% 概率直接产出高级传说雷达。<br>
-                        <strong>肝材料合成：</strong>击败野外霸主或对战塔 Boss 收集「神兽碎片」与「元素核心」，在工作台手动合成追踪雷达。
+            <div class="grid-2" style="align-items:center;">
+                <div>
+                    <p class="feature-desc" style="line-height:1.9;">
+                        LumyMon 是 <strong>Lumyverse 团队</strong>为 COBBLEVERSE 开发的核心模组，专注于 <strong>传说宝可梦（Legendary / Mythical）</strong> 的完整获取链：不再靠碰运气野外刷新，而是通过 <strong>合成雷达 → 追踪定位 → 祭坛召唤 → 史诗对战</strong> 四步走，亲手把神兽收入队伍。
+                    </p>
+                    <p class="feature-desc" style="line-height:1.9; margin-top:12px;">
+                        模组还内置了 <strong>道馆 / 四天王地图导航</strong>、<strong>Regi 专属矿石</strong>、<strong>STARK 锻造台</strong> 与 <strong>Raid 晶体挑战</strong>，让旅程的每一步都有明确目标。本服转盘 OP 池的 <strong style="color:var(--gold);">宝可雷达</strong> 正是这条传说之路的起点！
                     </p>
                 </div>
-
-                <div class="feature-card cyan">
-                    <h3 style="color:var(--accent-cyan); margin-bottom:10px;">2. 栖息地追踪 (Habitat)</h3>
-                    <p class="feature-desc">
-                        手持雷达右键，雷达会共鸣指向该神兽在世界中的神圣坐标。<br>
-                        <strong>注意：</strong>建议在<strong>生存世界</strong>使用雷达召唤，剧情地图因冒险模式限制可能无法生成召唤祭坛。
-                    </p>
-                </div>
-
-                <div class="feature-card purple">
-                    <h3 style="color:var(--purple); margin-bottom:10px;">3. 降临仪式与对决</h3>
-                    <p class="feature-desc">
-                        抵达坐标后右键激活雷达，天空将变色并伴随雷电粒子特效，传说神兽正式降临！击败或使用大师球进行收服。
-                    </p>
+                <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+                    <img src="lumy_poke_radar.png" alt="宝可雷达" style="width:64px; image-rendering:pixelated; background:rgba(255,255,255,0.08); border-radius:12px; padding:10px;" title="宝可雷达">
+                    <img src="lumy_groudon_radar.png" alt="固拉多雷达" style="width:64px; image-rendering:pixelated; background:rgba(255,255,255,0.08); border-radius:12px; padding:10px;" title="固拉多雷达">
+                    <img src="lumy_articuno_radar.png" alt="急冻鸟雷达" style="width:64px; image-rendering:pixelated; background:rgba(255,255,255,0.08); border-radius:12px; padding:10px;" title="急冻鸟雷达">
+                    <img src="lumy_rainbow_wing.png" alt="虹色之翼" style="width:64px; image-rendering:pixelated; background:rgba(255,255,255,0.08); border-radius:12px; padding:10px;" title="虹色之翼">
+                    <img src="lumy_gs_ball.png" alt="GS球" style="width:64px; image-rendering:pixelated; background:rgba(255,255,255,0.08); border-radius:12px; padding:10px;" title="GS球">
                 </div>
             </div>
         </div>
 
-        <!-- Section 2: Mega Evolution & Z-Moves -->
+        <!-- 核心系统 -->
         <div class="glass-panel" style="margin-bottom: 30px;">
             <div class="section-header">
-                <span class="section-tag">COMPETITIVE COMBAT</span>
-                <h2 class="section-title"><span class="icon">⚔️</span> 巅峰竞技：Mega 进化、Z-招式与极巨化</h2>
-                <p class="section-desc">全面支持全世代核心战斗对战机制，构筑属于你的冠军级阵容。</p>
+                <span class="section-tag">CORE SYSTEMS</span>
+                <h2 class="section-title"><span class="icon">⚙️</span> 六大核心系统</h2>
             </div>
-
             <div class="grid-3">
                 <div class="feature-card">
-                    <h4 style="color:var(--primary); margin-bottom:8px; font-size:1.1rem;">💎 Mega 超级进化</h4>
-                    <p class="feature-desc">
-                        • <strong>超级手镯：</strong>佩戴在饰品栏。<br>
-                        • <strong>Mega 进化石：</strong>转盘紫池及对战塔高层稳定产出。<br>
-                        • 战斗中让宝可梦携带专属 Mega 石，点击进化按钮突破种族值上限！
-                    </p>
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px;">📡 传说雷达追踪</h4>
+                    <p class="feature-desc">合成「宝可雷达」后，配合稀有 <strong>定位芯片 (Locator Chip)</strong> 与定制制图台，即可生成地图直接指向传说宝可梦的精确位置——从关都到帕底亚，全地区神兽尽在掌握。</p>
                 </div>
-
                 <div class="feature-card">
-                    <h4 style="color:var(--gold); margin-bottom:8px; font-size:1.1rem;">⚡ Z-招式 (Z-Moves)</h4>
-                    <p class="feature-desc">
-                        • <strong>Z-手环与纯晶：</strong>涵盖 18 种全属性 Z 纯晶及专属 Z 晶石。<br>
-                        • 通过击败剧情世界道馆馆主及野外极巨巢穴收集，一回合释放震撼全场的毁灭打击！
-                    </p>
+                    <h4 style="color:var(--purple); margin-bottom:8px;">🏛️ 祭坛召唤仪式</h4>
+                    <p class="feature-desc">在专属祭坛上使用特定道具触发遭遇战，伴随自定义粒子与音效。阿尔宙斯、达克莱伊、无极汰那、雷吉艾勒奇、雷吉铎拉戈……仪式感拉满的神兽见面礼。</p>
                 </div>
-
                 <div class="feature-card">
-                    <h4 style="color:var(--purple); margin-bottom:8px; font-size:1.1rem;">🟣 极巨巢穴团战 (Dynamax)</h4>
-                    <p class="feature-desc">
-                        • 野外随机刷新紫色极巨能量光柱。<br>
-                        • 组队挑战超巨型 Boss，必定掉落高 IV 宝可梦、极巨糖果以及大量手办 A/B 奖励！
-                    </p>
+                    <h4 style="color:var(--green); margin-bottom:8px;">🌌 专属冒险维度</h4>
+                    <p class="feature-desc">为传说宝可梦打造的专属空间：<strong>新月岛</strong>（达克莱伊）、<strong>神奥神殿</strong>（阿尔宙斯），内部有独特机制与沉浸式场景。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">⚒️ STARK 锻造台</h4>
+                    <p class="feature-desc">专属合成系统，将传说碎片锻造成完整道具（如熔岩石等），是合成分裂雷达、超梦进化石等高阶物品的核心途径。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:#2ed573; margin-bottom:8px;">💎 Regi 矿石与资源</h4>
+                    <p class="feature-desc">新增独特矿石与资源点，采集后可合成雷吉洛克 / 雷吉艾斯 / 雷吉斯奇鲁等雷吉家族的召唤道具。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:#ff6b81; margin-bottom:8px;">⚔️ Raid 晶体挑战</h4>
+                    <p class="feature-desc">极巨化晶体 Raid 战斗系统，与伙伴组队挑战超强 Boss 宝可梦，赢取稀有掉落。</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Fossils & Expeditions -->
-        <div class="glass-panel">
+        <!-- 雷达列表 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
             <div class="section-header">
-                <span class="section-tag">EXPLORATION & RESEARCH</span>
-                <h2 class="section-title"><span class="icon">🧪</span> 化石复活实验室与宝可梦探险队</h2>
+                <span class="section-tag">RADAR INDEX</span>
+                <h2 class="section-title"><span class="icon">🗺️</span> 传说雷达一览</h2>
+                <p class="section-desc">宝可雷达是起点，合成对应神兽雷达即可精准追踪目标。以下为本服可获得的雷达与对应传说宝可梦：</p>
             </div>
+            <div class="table-responsive">
+                <table class="wiki-table">
+                    <thead><tr><th>雷达</th><th>追踪目标</th><th>雷达</th><th>追踪目标</th></tr></thead>
+                    <tbody>
+                        <tr><td>急冻鸟雷达</td><td>急冻鸟</td><td>闪电鸟雷达</td><td>闪电鸟</td></tr>
+                        <tr><td>火焰鸟雷达</td><td>火焰鸟</td><td>洛奇亚雷达</td><td>洛奇亚</td></tr>
+                        <tr><td>凤王雷达</td><td>凤王</td><td>固拉多雷达</td><td>固拉多</td></tr>
+                        <tr><td>盖欧卡雷达</td><td>盖欧卡</td><td>Mega烈空坐雷达</td><td>超级烈空坐</td></tr>
+                        <tr><td>骑拉帝纳雷达</td><td>骑拉帝纳</td><td>时空雷达</td><td>帝牙卢卡 / 帕路奇亚</td></tr>
+                        <tr><td>席多蓝恩雷达</td><td>席多蓝恩</td><td>雷吉洛克雷达</td><td>雷吉洛克</td></tr>
+                        <tr><td>雷吉艾斯雷达</td><td>雷吉艾斯</td><td>雷吉斯奇鲁雷达</td><td>雷吉斯奇鲁</td></tr>
+                        <tr><td>雷吉奇卡斯雷达</td><td>雷吉奇卡斯</td><td>蕾冠王·白马雷达</td><td>蕾冠王 (冰马)</td></tr>
+                        <tr><td>蕾冠王·黑马雷达</td><td>蕾冠王 (灵马)</td><td>古剑豹雷达</td><td>古剑豹</td></tr>
+                        <tr><td>古玉鱼雷达</td><td>古玉鱼</td><td>鼎鹿雷达</td><td>鼎鹿</td></tr>
+                        <tr><td>厄诡椪雷达</td><td>厄诡椪</td><td>奈克洛兹玛·黎明雷达</td><td>奈克洛兹玛 (黎明)</td></tr>
+                        <tr><td>奈克洛兹玛·黄昏雷达</td><td>奈克洛兹玛 (黄昏)</td><td>拉帝兄妹雷达</td><td>拉帝亚斯 / 拉帝欧斯</td></tr>
+                        <tr><td>无极汰那雷达</td><td>无极汰那</td><td>分歧抉择雷达</td><td>基格尔德</td></tr>
+                        <tr><td>极巨树雷达</td><td>极巨化传说</td><td>宝可雷达</td><td>传说之路的起点</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-            <div class="grid-2">
+        <!-- 传说材料 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">LEGENDARY ITEMS</span>
+                <h2 class="section-title"><span class="icon">🎒</span> 常见传说材料与道具</h2>
+            </div>
+            <div class="grid-3">
                 <div class="feature-card">
-                    <h4 style="color:var(--accent-cyan); margin-bottom:8px; font-size:1.1rem;">⛏️ 化石挖掘与复活 (Fossils Plus)</h4>
-                    <p class="feature-desc">
-                        地下矿洞中蕴藏着古代化石原石，配合 <code>pickaxeminigame</code> 采矿小游戏可精准挖出完整化石。带回研究室的化石复活仪中，即可唤醒菊石兽、始祖大鸟、化石翼龙等远古霸主！
+                    <h4 style="color:var(--gold); margin-bottom:8px;">👑 召唤核心</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        蕾冠王冠冕、闪光蕾冠王冠冕、GS球、红色锁链、牵绊缰绳、基因之楔、N合体器/分离器——神兽召唤与形态转化的关键道具。
                     </p>
                 </div>
-
                 <div class="feature-card">
-                    <h4 style="color:#2ed573; margin-bottom:8px; font-size:1.1rem;">🏕️ 宝可梦远征探险 (Cobblemon Expeditions)</h4>
-                    <p class="feature-desc">
-                        电脑（PC）里闲置的宝可梦不再吃灰！通过远征系统派遣多支探险小队前往深林、火山或遗迹探险，离线挂机也能带回珍贵树果、进化石与手办碎片。
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px;">🪶 羽翼与之翼</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        虹色之翼、银色之翼、冰川/雷霆/余烬之羽、月之羽翼、天界之笛、时间/空间之笛——飞行与时空系传说宝可梦的通行证。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--purple); margin-bottom:8px;">💠 宝珠与遗物</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        金刚结晶、白玉/白金宝珠、朱红/靛蓝宝珠、红宝石/蓝宝石之露、原始/荒芜/以太宝石、熔融地壳、五大遗物——丰缘与神奥传说的力量之源。
+                    </p>
+                </div>
+            </div>
+            <div class="callout callout-info" style="margin-top:16px;">
+                <div class="callout-icon">🎯</div>
+                <div class="callout-content">
+                    <div class="callout-title">本服获取提示</div>
+                    <p style="font-size:0.9rem; margin-top:4px;">
+                        大部分传说材料都可以从大厅转盘抽到（OP 金池 5.6% 概率）！抽到宝可雷达后即可开始你的传说收集之旅。详细奖池见 <a href="gacha.html" style="color:var(--accent-cyan);">转盘抽卡页面</a>。
                     </p>
                 </div>
             </div>
@@ -167,12 +195,12 @@
                 <a href="index.html" class="footer-link">首页</a>
                 <a href="gacha.html" class="footer-link">抽卡维基</a>
                 <a href="world.html" class="footer-link">剧情地图</a>
-                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
                 <a href="guide.html" class="footer-link">新手 FAQ</a>
             </div>
         </div>
     </footer>
-
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>

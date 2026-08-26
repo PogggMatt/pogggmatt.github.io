@@ -33,7 +33,7 @@
         </div>
         <div class="menubar">
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link active">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">传说与对战</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link active">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
             </ul>
             <div class="nav-action">
                 <button class="btn-ip-copy" onclick="copyServerIP()">
@@ -55,7 +55,7 @@
                 大转盘抽卡与 <span class="gradient-text squiggly-word">二游式养成循环</span>
             </h1>
             <p class="hero-subtitle" style="margin-bottom: 20px;">
-                公开透明的 28270 面大转盘、爽快的开箱动画与零氪肝卷闭环，让变强之路充满惊喜。
+                公开透明的 1782 面大转盘、爽快的开箱动画与零氪肝卷闭环，让变强之路充满惊喜。
             </p>
         </div>
 
@@ -73,9 +73,9 @@
                 <div class="feature-card gold">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                         <span class="rate-badge rate-gold">OP 顶级金池</span>
-                        <span style="font-size:1.4rem; font-weight:900; color:var(--gold);">0.35%</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:var(--gold);">5.6%</span>
                     </div>
-                    <p style="color:var(--gold); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：99 / 28270</p>
+                    <p style="color:var(--gold); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：99 / 1782</p>
                     <p class="feature-desc">
                         包含全服最核心战略物资：<strong>大师球</strong>、<strong>传说宝可梦雷达</strong>、<strong>金色王冠</strong>、神话觉醒石、极品特性膏药等。一发入魂直接改变战局！
                     </p>
@@ -84,9 +84,9 @@
                 <div class="feature-card purple">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                         <span class="rate-badge rate-purple">厉害 进阶紫池</span>
-                        <span style="font-size:1.4rem; font-weight:900; color:var(--purple);">2.16%</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:var(--purple);">17.1%</span>
                     </div>
-                    <p style="color:var(--purple); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：610 / 28270</p>
+                    <p style="color:var(--purple); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：305 / 1782</p>
                     <p class="feature-desc">
                         战力进阶必备：<strong>高级球组</strong>、<strong>全套属性进化石</strong>、<strong>银色王冠</strong>、极巨腕带、对战携带道具、神奇糖果组。
                     </p>
@@ -95,9 +95,9 @@
                 <div class="feature-card">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
                         <span class="rate-badge rate-white">普通 基础白池</span>
-                        <span style="font-size:1.4rem; font-weight:900; color:#ced6e0;">97.49%</span>
+                        <span style="font-size:1.4rem; font-weight:900; color:#ced6e0;">77.3%</span>
                     </div>
-                    <p style="color:var(--text-dim); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：27560 / 28270</p>
+                    <p style="color:var(--text-dim); font-size:0.9rem; font-weight:700; margin-bottom:10px;">总面数：1378 / 1782</p>
                     <p class="feature-desc">
                         日常生存探险补给：各种精灵球、超级球、高级树果、全满药水、战斗强化药剂、宝可梦高级料理食材。
                     </p>
@@ -123,7 +123,7 @@
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
                     <div>
                         <h4 style="color:#fff; font-size:1.1rem;">🎲 线上转盘模拟器 (实时概率测试)</h4>
-                        <p style="color:var(--text-dim); font-size:0.85rem;">严格按照服务器 99/610/27560 权重算法生成结果（金1面/紫2面/白20面）</p>
+                        <p style="color:var(--text-dim); font-size:0.85rem;">严格按照服务器 v13.1 奖池 99/305/1378 权重算法生成结果</p>
                     </div>
                     <div style="font-size:0.88rem; color:var(--text-muted);">
                         已抽: <span id="statTotal" style="color:#fff; font-weight:700;">0</span> | 
@@ -142,6 +142,71 @@
 
                 <div class="sim-results" id="simResults">
                     <span style="color: var(--text-dim);">点击上方按钮模拟开箱，测试你的欧皇血统！</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: 完整奖池清单 (v13.1) -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">FULL POOL LIST · v13.1</span>
+                <h2 class="section-title"><span class="icon">📋</span> 抽卡奖池完整清单 (v13.1)</h2>
+                <p class="section-desc">
+                    以下为服务器当前 <code>wacky_wheel-0.2.3-gacha-v13.1.jar</code> 的完整奖池配置：<strong>总面数 1782</strong>，OP 金池 99 面 (5.6%)、厉害紫池 305 面 (17.1%)、普通白池 1378 面 (77.3%)。
+                </p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 24px;">
+                <div class="feature-card gold">
+                    <h4 style="color:var(--gold); margin-bottom:10px;">🟡 OP 金池 · 99 面 (5.6%)</h4>
+                    <ul style="color:var(--text-muted); font-size:0.88rem; line-height:1.9; padding-left:16px;">
+                        <li><strong style="color:#fff;">20x</strong> 宝可雷达</li>
+                        <li><strong style="color:#fff;">5x</strong> 金皇冠 / 大师球 / 起源球</li>
+                        <li>超梦X·Y进化石、究极奈克洛兹玛Z</li>
+                        <li>牵绊缰绳、基因之楔、N合体器、N分离器</li>
+                        <li>金刚结晶、白玉/白金/朱红/靛蓝宝珠</li>
+                        <li>腐朽的剑、腐朽的盾、蕾冠王冠冕</li>
+                        <li>泰坦遗物、海洋/大地/天空核心</li>
+                        <li>完美化石、起源化石、化石头盔</li>
+                        <li>天界/时间/空间之笛、GS球、红色锁链</li>
+                        <li>大木博士的信、会员卡、陨石结晶</li>
+                        <li>捕梦网、月之羽翼、远古DNA</li>
+                        <li>克隆催化剂、合成矩阵</li>
+                        <li>虹色/银色之翼、冰川/雷霆/余烬之羽</li>
+                        <li>红宝石/蓝宝石之露、原始/荒芜/以太宝石</li>
+                        <li>熔融地壳、寒冰/岩石/金属/电光/龙之遗物</li>
+                        <li>污染碎片、暗影之心、暗影灵魂石</li>
+                        <li>翡翠徽章、闪光蕾冠王冠冕、火箭装甲、小智帽</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card purple">
+                    <h4 style="color:var(--purple); margin-bottom:10px;">🟣 厉害紫池 · 305 面 (17.1%)</h4>
+                    <ul style="color:var(--text-muted); font-size:0.88rem; line-height:1.9; padding-left:16px;">
+                        <li><strong style="color:#fff;">127x</strong> 空白进化石</li>
+                        <li><strong style="color:#fff;">5x</strong> Airuhsea手办 / Damorgo手办</li>
+                        <li><strong style="color:#fff;">2x</strong> 超级手环、超级钥石</li>
+                        <li><strong style="color:#fff;">2x</strong> 银皇冠 ×6 属性 (HP/攻/防/特攻/特防/速)</li>
+                        <li><strong style="color:#fff;">2x</strong> Z手环、Z强力手环</li>
+                        <li><strong style="color:#fff;">2x</strong> 太晶珠、极巨腕带、许愿星</li>
+                        <li><strong style="color:#fff;">2x</strong> 极巨汤、极巨菇、极巨糖果、极巨蜂蜜</li>
+                        <li><strong style="color:#fff;">2x</strong> 阿勃梭鲁/烈咬陆鲨/路卡利欧进化石Z</li>
+                        <li><strong style="color:#fff;">2x</strong> 雷丘Z、虫Z 等</li>
+                        <li style="color:var(--text-dim);">…… 共 87 种道具</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <h4 style="color:#fff; margin-bottom:10px;">⚪ 普通白池 · 1378 面 (77.3%)</h4>
+                    <ul style="color:var(--text-muted); font-size:0.88rem; line-height:1.9; padding-left:16px;">
+                        <li><strong style="color:#fff;">24x</strong> 绿宝石 / 金锭 / 钻石 / 铁锭</li>
+                        <li><strong style="color:#fff;">20x</strong> 经验糖 S/M/L、经验之瓶</li>
+                        <li><strong style="color:#fff;">20x</strong> 石英块、红线、下界合金锭、金苹果</li>
+                        <li><strong style="color:#fff;">16x</strong> 煤炭块</li>
+                        <li><strong style="color:#fff;">12x</strong> 金块、钻石块、绿宝石块</li>
+                        <li><strong style="color:#fff;">8x</strong> 皮革、线</li>
+                        <li style="color:var(--text-dim);">日常生存探险稳定补给，转盘永不亏！</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -236,6 +301,66 @@
             </div>
         </div>
 
+        <!-- Section: 杂物回收商 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">JUNK RECYCLER VILLAGERS</span>
+                <h2 class="section-title"><span class="icon">♻️</span> 杂物回收商：杂物换手办</h2>
+                <p class="section-desc">
+                    大厅新增 <strong>3 位「杂物回收商」村民</strong>（金色名牌，武器商职业 5 级）。把你背包里积灰的树果、药水、进化石矿石、精灵球统统回收，直接兑换 <strong style="color:var(--gold);">Airuhsea 手办</strong> 与 <strong style="color:var(--gold);">Damorgo 手办</strong>！手办正是合成抽奖券的核心材料，等于杂物变抽奖券！
+                </p>
+            </div>
+
+            <div class="grid-3" style="margin-bottom: 8px;">
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">♻️ 回收商 1/3</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        <strong>回收类别：</strong>Safari 香水与矿石<br>
+                        • 香水 (普通/稀有/超稀有) x5-8<br>
+                        • 心鳞片 x8、星碎片 x6<br>
+                        • Tumblestone / 黑色 / 天空 x8-10<br>
+                        • 进化岩石 (光滑/潮湿/灼热/冰冷) x15<br>
+                        • 幸运矿工头盔 x6、闪光香 x4-6<br>
+                        • 破碎陶罐 x10、杰作茶具 x6<br>
+                        • 古代金币袋 x8
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">♻️ 回收商 2/3</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        <strong>回收类别：</strong>对战道具与宝石<br>
+                        • 携带道具 (焦点镜/达人带/气势披带等) x8-30<br>
+                        • 属性宝石 (虫/恶/龙/电/妖等) x12<br>
+                        • 进化石矿石 (日/月/火/水/雷/叶/冰/觉醒) x5<br>
+                        • 化石 (盔甲/爪子/贝壳/琥珀等) x6<br>
+                        • 招式学习种子 (电气/青草/薄雾/精神) x10<br>
+                        • 培养覆盖物 Mulch x7-12
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">♻️ 回收商 3/3</h4>
+                    <p class="feature-desc" style="font-size:0.88rem;">
+                        <strong>回收类别：</strong>食物与精灵球<br>
+                        • 宝可梦美食 (冰淇淋/马卡龙/咖喱/年糕等) x6-15<br>
+                        • 苹果/胡萝卜/马铃薯/甜浆果 x25-45<br>
+                        • 金苹果 x5、附魔金苹果 x1<br>
+                        • 蜘蛛眼 x35、腐肉 x60<br>
+                        • <strong style="color:var(--accent-cyan);">精灵球 (全部 25+ 种) x30</strong> 换 1 手办<br>
+                        • 精灵球 30 个换 1 手办，最稳定的回收通道！
+                    </p>
+                </div>
+            </div>
+            <div class="callout callout-info" style="margin-top: 16px;">
+                <div class="callout-icon">💡</div>
+                <div class="callout-content">
+                    <div class="callout-title">回收攻略小贴士</div>
+                    <p style="font-size:0.9rem; margin-top:4px;">
+                        手办 A (Airuhsea) 与手办 B (Damorgo) 各攒 2 个即可在大厅村民处兑换 <strong>1 张抽奖券</strong>。刷图/抓宠攒下的杂物别乱丢，来回收商换手办，等于把垃圾变成抽卡资本！
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Section 3: Smartphone Guide -->
         <div class="glass-panel">
             <div class="section-header">
@@ -274,7 +399,8 @@
                 <a href="index.html" class="footer-link">首页</a>
                 <a href="gacha.html" class="footer-link">抽卡维基</a>
                 <a href="world.html" class="footer-link">剧情地图</a>
-                <a href="lumymon.html" class="footer-link">传说合成</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
                 <a href="guide.html" class="footer-link">新手 FAQ</a>
             </div>
         </div>

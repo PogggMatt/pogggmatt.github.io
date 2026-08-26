@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CobbleSafari 狩猎世界 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link active">CobbleSafari</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>🎫 COBBLESAFARI HUNTING ZONE</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                CobbleSafari <span class="gradient-text squiggly-word">狩猎公园与探索维度</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                把宝可梦正作的狩猎公园、神奥地下、反转世界玩法完整搬进 Cobblemon（Modrinth 2.1M+ 下载）——每日限时 Safari 狩猎、闪光 2 倍加成、热气球空投补给。
+            </p>
+        </div>
+
+        <!-- 简介 + 配图 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">ABOUT THE MOD</span>
+                <h2 class="section-title"><span class="icon">🎫</span> 什么是 CobbleSafari？</h2>
+            </div>
+            <p class="feature-desc" style="line-height:1.9; margin-bottom:20px;">
+                CobbleSafari 最初只是一个「Safari 维度」数据包，发展到现在已成为完整的宝可梦正作玩法移植模组：<strong>Safari 狩猎维度、香薰系统、闪光香、热气球空投、神奥地下、反转世界</strong> 一应俱全。本服已实装全部核心玩法，是每天必去的抓宠圣地！
+            </p>
+            <div class="grid-3">
+                <div><img src="cobblesafari_1.png" alt="CobbleSafari 截图1" style="width:100%; border-radius:12px; border:1px solid rgba(255,255,255,0.1);"></div>
+                <div><img src="cobblesafari_2.png" alt="CobbleSafari 截图2" style="width:100%; border-radius:12px; border:1px solid rgba(255,255,255,0.1);"></div>
+                <div><img src="cobblesafari_3.png" alt="CobbleSafari 截图3" style="width:100%; border-radius:12px; border:1px solid rgba(255,255,255,0.1);"></div>
+            </div>
+        </div>
+
+        <!-- 核心玩法 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">CORE GAMEPLAY</span>
+                <h2 class="section-title"><span class="icon">⚙️</span> 核心玩法</h2>
+            </div>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <h4 style="color:var(--green); margin-bottom:8px;">🎫 Safari 狩猎维度</h4>
+                    <p class="feature-desc">通过传送门进入专属狩猎维度，<strong>每日限时入场</strong>（时间到会被自动送出）。维度内按水、火、草、电等属性划分生态区，狩猎氛围拉满。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">✨ 闪光 2 倍加成</h4>
+                    <p class="feature-desc">Safari 维度内<strong>全天常驻 2 倍闪光概率</strong>！配合闪光香（Great/Ultra Shiny Incense）还能进一步叠高，是刷闪党绝不能错过的圣地。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--purple); margin-bottom:8px;">🏹 狩猎球规则</h4>
+                    <p class="feature-desc">Safari 内遵循正作规则：<strong>只能使用狩猎球</strong>捕捉，考验你的投球时机与运气。在维度内死亡会直接送出 Safari 而非扣命，大胆冲！</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px;">🌸 香薰系统 (Perfume)</h4>
+                    <p class="feature-desc">使用不同品质的香水（普通/稀有/超稀有）可以<strong>吸引对应稀有度的宝可梦</strong>生成，定向刷你想要的目标。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:#ff6b81; margin-bottom:8px;">🎈 热气球空投</h4>
+                    <p class="feature-desc">主世界会飘过<strong>普通热气球</strong>，Safari 维度内则是<strong>狩猎热气球</strong>——击落即可获得精灵球、进化石、经验糖、能力胶囊等补给（大师球也有机会！）。</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:#2ed573; margin-bottom:8px;">🕳️ 神奥地下 & 反转世界</h4>
+                    <p class="feature-desc">更深的探索维度：<strong>神奥地下</strong>埋藏着珍贵化石与矿石，<strong>反转世界</strong>则是骑拉帝纳的主场，高风险高回报。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safari 专属物品 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">SAFARI ITEMS</span>
+                <h2 class="section-title"><span class="icon">🎒</span> Safari 专属物品</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="wiki-table">
+                    <thead><tr><th>物品</th><th>作用</th><th>获取方式</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>香水 (Perfume)</strong></td><td>吸引普通/稀有/超稀有宝可梦生成</td><td>Safari 宝箱 / 热气球 / 交易</td></tr>
+                        <tr><td><strong>闪光香 (Shiny Incense)</strong></td><td>大幅提升闪光遭遇概率（Great/Ultra 两档）</td><td>Safari 宝箱 / 热气球</td></tr>
+                        <tr><td><strong>心鳞片 (Heart Scale)</strong></td><td>回忆技能的核心材料</td><td>Safari 钓鱼 / 宝箱</td></tr>
+                        <tr><td><strong>星碎片 (Star Piece)</strong></td><td>高价值收藏品，可兑换手办</td><td>Safari 宝箱 / 热气球</td></tr>
+                        <tr><td><strong>幸运矿工头盔</strong></td><td>挖矿时概率掉落额外矿物</td><td>Safari 宝箱 / 交易</td></tr>
+                        <tr><td><strong>狩猎球 (Safari Ball)</strong></td><td>Safari 维度唯一可用的精灵球</td><td>进入 Safari 时发放 / 补给</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 服务器联动 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">SERVER INTEGRATION</span>
+                <h2 class="section-title"><span class="icon">🤝</span> 与服务器经济联动</h2>
+            </div>
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:8px;">♻️ 杂物回收商</h4>
+                    <p class="feature-desc">
+                        Safari 里攒下的<strong>香水、心鳞片、星碎片、闪光香、幸运矿工头盔</strong>，全部可以在大厅<strong>杂物回收商</strong>处兑换 <strong style="color:var(--gold);">Airuhsea / Damorgo 手办</strong>！手办攒够即可合成抽奖券，等于 Safari 打猎直接转化成抽卡资本。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--accent-cyan); margin-bottom:8px;">💎 转盘补给</h4>
+                    <p class="feature-desc">
+                        转盘普通池也加入了 <strong>Safari 相关道具</strong>，日常抽卡也能补充狩猎物资。Safari 每日免费入场 + 转盘补给，双线并进，抓宠永不断粮！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=6"></script>
+</body>
+</html>

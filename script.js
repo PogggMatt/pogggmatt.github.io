@@ -113,42 +113,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ==========================================================================
    GACHA SIMULATOR LOGIC (BASED ON EXACT SERVER CONFIG)
-   Total Faces: 28270
-   OP (Gold): 99 (0.35%)
-   High (Purple): 610 (2.16%)
-   Normal (White): 27560 (97.49%)
+   Total Faces: 1782
+   OP (Gold): 99 (5.6%)
+   High (Purple): 305 (17.1%)
+   Normal (White): 1378 (77.3%)
    ========================================================================== */
 const GACHA_ITEMS = {
     gold: [
+        "📡 宝可雷达 x20",
+        "👑 金皇冠 (Gold Bottle Cap)",
         "🌟 大师球 (Master Ball)",
-        "👑 金色王冠 (Gold Bottle Cap)",
-        "📡 传说雷达 (Legendary Radar)",
-        "✨ 闪光护符 (Shiny Charm)",
-        "⚡ 觉醒之石·神话 (Mythic Stone)",
-        "🔮 特性膏药 (Ability Patch)"
+        "🌌 起源球 (Origin Ball)",
+        "⚡ 超梦X/Y进化石",
+        "🌑 究极奈克洛兹玛Z",
+        "🔗 牵绊缰绳 / 基因之楔",
+        "💎 金刚结晶 / 白玉宝珠 / 白金宝珠",
+        "🔴 朱红宝珠 / 靛蓝宝珠",
+        "🗡️ 腐朽的剑 / 腐朽的盾",
+        "👑 蕾冠王冠冕 / 闪光蕾冠王冠冕",
+        "🌊 海洋核心 / 大地核心 / 天空核心",
+        "🪨 完美化石 / 起源化石 / 化石头盔",
+        "🪈 天界之笛 / 时间之笛 / 空间之笛",
+        "🥚 GS球 / 大木博士的信 / 会员卡",
+        "☄️ 陨石结晶 / 捕梦网 / 月之羽翼",
+        "🪶 虹色之翼 / 银色之翼 / 冰川/雷霆/余烬之羽",
+        "🧬 远古DNA / 克隆催化剂 / 合成矩阵",
+        "💠 红宝石之露 / 蓝宝石之露 / 原始宝石",
+        "🔥 熔融地壳 / 寒冰/岩石/金属/电光/龙之遗物",
+        "🌑 暗影之心 / 暗影灵魂石 / 污染碎片",
+        "🏅 翡翠徽章 / 火箭装甲 / 小智帽"
     ],
     purple: [
-        "🟣 高级球 x16 (Ultra Ball)",
-        "🥈 银色王冠 (Silver Bottle Cap)",
-        "💎 极巨腕带 (Dynamax Band)",
-        "🔥 火之石 / 水之石 / 雷之石 x4",
-        "🍃 达人带 / 气势披带 (Held Items)",
-        "🍬 活力块 x10 / 神奇糖果 x8"
+        "⬜ 空白进化石 x127",
+        "🧸 Airuhsea手办 / Damorgo手办",
+        "⌚ 超级手环 / 超级钥石",
+        "🥈 银皇冠(HP/攻击/防御/特攻/特防/速度)",
+        "📿 Z手环 / Z强力手环",
+        "💠 太晶珠 / 极巨腕带 / 许愿星",
+        "🍄 极巨汤 / 极巨菇 / 极巨糖果 / 极巨蜂蜜",
+        "💢 阿勃梭鲁/烈咬陆鲨/路卡利欧进化石Z",
+        "⚡ 雷丘Z / 虫Z 等 87 种"
     ],
     white: [
-        "⚪ 精灵球 x32 (PokeBall)",
-        "🔵 超级球 x16 (Great Ball)",
-        "🍒 苹野果 x16 / 文柚果 x16",
-        "🧪 全满药 x5 (Max Potion)",
-        "⚡ 战斗道具 (X-Attack/X-Speed)",
-        "🍞 宝可梦高级料理食材 x8"
+        "💎 绿宝石 / 金锭 / 钻石 / 铁锭 x24",
+        "🍬 经验糖 S/M/L x20",
+        "🧪 经验之瓶 / 石英块 / 红线 x20",
+        "🟧 下界合金锭 / 金苹果 x20",
+        "🪨 煤炭块 x16",
+        "🟨 金块 / 钻石块 / 绿宝石块 x12",
+        "🟫 皮革 / 线 x8"
     ]
 };
 
 let simStats = { total: 0, gold: 0, purple: 0, white: 0 };
 
 function rollGachaOnce() {
-    const roll = Math.floor(Math.random() * 28270) + 1; // 1 ~ 28270
+    const roll = Math.floor(Math.random() * 1782) + 1; // 1 ~ 1782
     simStats.total++;
 
     if (roll <= 99) {
@@ -156,13 +176,13 @@ function rollGachaOnce() {
         simStats.gold++;
         const item = GACHA_ITEMS.gold[Math.floor(Math.random() * GACHA_ITEMS.gold.length)];
         return { tier: 'gold', name: item };
-    } else if (roll <= 99 + 610) {
-        // Purple: 100-709
+    } else if (roll <= 99 + 305) {
+        // Purple: 100-404
         simStats.purple++;
         const item = GACHA_ITEMS.purple[Math.floor(Math.random() * GACHA_ITEMS.purple.length)];
         return { tier: 'purple', name: item };
     } else {
-        // White: 710-28270
+        // White: 405-1782
         simStats.white++;
         const item = GACHA_ITEMS.white[Math.floor(Math.random() * GACHA_ITEMS.white.length)];
         return { tier: 'white', name: item };

@@ -195,6 +195,31 @@
                         <strong>答：</strong>完全不用担心！服务器安装了 <code>Lootr</code> 独立宝箱模组，世界里的每一个天然宝箱对于每个玩家都是独立可开的，人人都有属于自己的一份战利品。
                     </div>
                 </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q9: 从剧情世界回主服后背包空了 / 变成幽灵 / 提示 "PLEASE CONNECT TO story"？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>这是跨服数据同步机制的保护反应，<strong>数据不会丢，不用慌！</strong><br>
+                        <strong>原因：</strong>在剧情世界<strong>异常退出</strong>（直接关游戏 / 断线 / 服务器重启）时，你的数据归属标记没有正常重置，主服会误以为「数据属于剧情世界」而拒绝加载，于是背包看着像空了，极端情况会变成幽灵（无敌但捡不了东西）。<br>
+                        <strong>解决：</strong>找群主/管理员说一声「跨服卡了」，管理员修正一下数据库标记就能恢复，背包和宝可梦原封不动。<br>
+                        <strong>避免：</strong>跨服切换时请走传送点 / 传送指令正常往返，<strong>不要直接关游戏</strong>。正常退出就不会触发。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <span>Q10: 客户端报「5个本客户端未知的注册表项」进不去服务器？</span>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-body">
+                        <strong>答：</strong>说明你的客户端缺少服务器新增的模组。<br>
+                        服务器在原版 Cobbleverse 基础上额外加装了模组（命名空间 <code>gaohaaddiotion</code> 等），只装原版整合包就会出现这个报错。<br>
+                        <strong>解决：</strong>按群公告 / 安装教程页提示，更新到最新版整合包，或补装服务器新增的模组文件。
+                    </div>
+                </div>
             </div>
         </div>
     </main>

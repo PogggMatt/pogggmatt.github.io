@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对战塔与任务实验室 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+    <!-- Navigation Header -->
+        <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link active">对战塔与任务</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>⚔️ BATTLE TOWER & FIELD LAB</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                对战塔 <span class="gradient-text squiggly-word">× 任务实验室</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                服务器经济链的核心引擎：爬对战塔、刷野外实验室任务，赚 <strong>手办</strong>，换 <strong>抽奖券</strong>，再去转盘抽大奖——肝就完事了！
+            </p>
+        </div>
+
+        <!-- 经济闭环 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">ECONOMY LOOP</span>
+                <h2 class="section-title"><span class="icon">🔄</span> 手办经济闭环</h2>
+            </div>
+            <div class="grid-3">
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:2.2rem;">⚔️</div>
+                    <h4 style="color:var(--accent-cyan); margin:8px 0;">对战塔 Battle Tower</h4>
+                    <p class="feature-desc">爬塔赚 <strong>BP</strong>，BP 在塔内商店兑换手办 ×5</p>
+                </div>
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:2.2rem;">🔬</div>
+                    <h4 style="color:var(--green); margin:8px 0;">任务实验室 Field Lab</h4>
+                    <p class="feature-desc">完成任务随机掉落 <strong>手办 A 或 B ×3-5</strong></p>
+                </div>
+                <div class="feature-card" style="text-align:center;">
+                    <div style="font-size:2.2rem;">🎟️</div>
+                    <h4 style="color:var(--gold); margin:8px 0;">兑换抽奖券</h4>
+                    <p class="feature-desc">手办 A 或 B <strong>各 2 个 = 1 张抽奖券</strong>（村民兑换）</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Battle Tower 玩法 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">BATTLE TOWER</span>
+                <h2 class="section-title"><span class="icon">🏰</span> Cobblemon Battle Tower 对战塔</h2>
+                <p class="section-desc">来自 Modrinth 的竞技挑战模组：用方块作为入口（合成<strong>全息对战塔</strong>放置即可），锁定队伍后逐层爬塔，楼层越高越难，通关赚 <strong>Battle Points (BP)</strong> 去商店换奖励。</p>
+            </div>
+            <div class="grid-2" style="align-items:center; margin-bottom:20px;">
+                <div>
+                    <h3 style="color:var(--accent-cyan); font-size:1.05rem; margin-bottom:10px;">四种战斗模式</h3>
+                    <ul style="color:var(--text-muted); font-size:0.93rem; line-height:2.1; padding-left:18px;">
+                        <li><strong>单打 Singles</strong> — 1v1，每边 1-6 只</li>
+                        <li><strong>双打 Doubles</strong> — 2v2，每边 2-6 只</li>
+                        <li><strong>合作双打 Co-op</strong> — 2 名玩家 vs NPC，每人恰好 3 只</li>
+                        <li><strong>Boss 战</strong> — 传说宝可梦 boss，所有参与者共享 HP 池（1 人 6 只 / 2 人各 3 只 / 3 人各 2 只）</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="bt_tower.png" alt="对战塔" style="width:100%; border-radius:12px; border:1px solid rgba(255,255,255,0.1);">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="wiki-table">
+                    <thead><tr><th>楼层</th><th>Gimmick 机制</th><th>队伍数</th></tr></thead>
+                    <tbody>
+                        <tr><td>1-5 层</td><td>无特殊机制</td><td>20 套队伍</td></tr>
+                        <tr><td>5-10 层</td><td>Tera 太晶化</td><td>15 套</td></tr>
+                        <tr><td>10-15 层</td><td>Tera + 极巨化</td><td>10 套</td></tr>
+                        <tr><td>15-30 层</td><td>Tera + 极巨化 + Mega</td><td>30 套</td></tr>
+                        <tr><td>30+ 层</td><td>全部机制 + 传说宝可梦</td><td>50 套</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="callout callout-info" style="margin-top:16px;">
+                <div class="callout-icon">💡</div>
+                <div class="callout-content">
+                    <div class="callout-title">服务器 BP 商店</div>
+                    <p style="font-size:0.9rem; margin-top:4px;">
+                        塔内 BP 商店支持兑换 <strong>手办 ×5 = 15 BP</strong>（打一次 10 层塔的收入量级），NPC 的 Tera/极巨化/Mega 开关可在 config 单独调整，物品使用限制随楼层增加。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Field Lab 玩法 -->
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">FIELD LAB</span>
+                <h2 class="section-title"><span class="icon">🔬</span> Pokémon Field Lab 任务实验室</h2>
+                <p class="section-desc">放置<strong>野外实验室方块</strong>（Poké-Field Lab），随机刷新研究任务，按任务要求提交宝可梦即可获得奖励。</p>
+            </div>
+            <div class="grid-2">
+                <div>
+                    <h3 style="color:var(--green); font-size:1.05rem; margin-bottom:10px;">任务类型一览</h3>
+                    <ul style="color:var(--text-muted); font-size:0.9rem; line-height:2; padding-left:18px;">
+                        <li>🔍 <strong>属性研究</strong> — 带一只指定属性的宝可梦</li>
+                        <li>🔍 <strong>双属性研究</strong> — 带一只双属性符合条件的宝可梦</li>
+                        <li>🐾 <strong>物种研究</strong> — 带指定宝可梦</li>
+                        <li>✨ <strong>特性测试</strong> — 带拥有指定特性的宝可梦</li>
+                        <li>💥 <strong>招式研究</strong> — 带会指定招式的宝可梦</li>
+                        <li>🎭 <strong>性格研究</strong> — 带指定性格的宝可梦</li>
+                        <li>🔄 <strong>进化阶段</strong> — 带指定进化形态的宝可梦</li>
+                        <li>🌍 <strong>生物群系样本</strong> — 带来自指定群系的宝可梦</li>
+                        <li>📊 <strong>种族值范围</strong> — 带指定 BST 区间的宝可梦</li>
+                        <li>🗺️ <strong>地区形态</strong> — 带指定地区的宝可梦</li>
+                        <li>📏 <strong>体型 / 体重研究</strong> — 带达标体型/体重的宝可梦</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color:var(--green); font-size:1.05rem; margin-bottom:10px;">🎁 任务奖励</h3>
+                    <p class="feature-desc" style="line-height:1.9;">完成随机任务即可获得<strong>手办</strong>奖励：随机掉落 <strong>Airuhsea 手办 或 Damorgo 手办 ×3-5</strong>，直接用于兑换抽奖券！</p>
+                    <div style="display:flex; gap:14px; margin-top:16px; flex-wrap:wrap;">
+                        <div style="text-align:center; background:rgba(255,255,255,0.04); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+                            <img src="airuhsea_figurine_texture.png" alt="Airuhsea 手办" style="width:96px; height:96px; image-rendering:pixelated;">
+                            <div style="font-size:0.85rem; margin-top:6px; color:var(--text-muted);">Airuhsea 手办<br><code style="font-size:0.7rem;">pokeblocks:airuhsea_figurine</code></div>
+                        </div>
+                        <div style="text-align:center; background:rgba(255,255,255,0.04); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08);">
+                            <img src="damorgo_figurine_texture.png" alt="Damorgo 手办" style="width:96px; height:96px; image-rendering:pixelated;">
+                            <div style="font-size:0.85rem; margin-top:6px; color:var(--text-muted);">Damorgo 手办<br><code style="font-size:0.7rem;">pokeblocks:damorgo_figurine</code></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 兑换规则 -->
+        <div class="glass-panel">
+            <div class="section-header">
+                <span class="section-tag">TRADING</span>
+                <h2 class="section-title"><span class="icon">🪙</span> 手办兑换规则</h2>
+            </div>
+            <div class="grid-2">
+                <div class="feature-card">
+                    <h4 style="color:var(--gold); margin-bottom:10px;">🎟️ 换抽奖券</h4>
+                    <p class="feature-desc" style="line-height:1.9;">
+                        手办 A（Airuhsea）<strong>2 个</strong> 或 手办 B（Damorgo）<strong>2 个</strong>，即可找村民兑换 <strong>1 张抽奖券</strong>。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="color:var(--purple); margin-bottom:10px;">⭐ 高级兑换</h4>
+                    <p class="feature-desc" style="line-height:1.9;">
+                        手办 A 或 B 各收集 <strong>15 个</strong> 可兑换稀有奖励（详情待定）。攒手办的同时别忘了转盘也在随机掉手办！
+                    </p>
+                </div>
+            </div>
+            <div class="callout callout-info" style="margin-top:16px;">
+                <div class="callout-icon">🎡</div>
+                <div class="callout-content">
+                    <div class="callout-title">完整经济链</div>
+                    <p style="font-size:0.9rem; margin-top:4px;">
+                        任务实验室 / 对战塔 → 手办 A·B → 村民换抽奖券 → 转盘抽 OP 大奖 → 杂物回收商把手办以外的东西再换回手办，循环起来！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
+                <a href="cobbleverse.html" class="footer-link">Cobbleverse</a>
+                <a href="battletower.html" class="footer-link">对战塔与任务</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=7"></script>
+</body>
+</html>

@@ -73,7 +73,7 @@
                 宝可梦 <span class="gradient-text squiggly-word">掉落查询</span>
             </h1>
             <p class="hero-subtitle" style="margin-bottom: 20px;">
-                全服 <strong>1098 只</strong>宝可梦的击杀掉落物数据库，<strong>中英双语</strong>查询——搜中文名（如 皮卡丘）或英文名都行！
+                全服 <strong>1098 只</strong>宝可梦的击杀掉落物数据库，<strong>中英双语</strong>查询，宝可梦名和掉落物都有中文——搜 皮卡丘 / 奇迹种子 / Miracle Seed 都行！
             </p>
         </div>
 
@@ -140,7 +140,8 @@
         if (!ds.length) return '';
         let rows = '';
         for (const d of ds) {
-            rows += '<tr><td>' + esc(d.item) + '</td><td style="text-align:center;">' + d.qty + '</td><td>' + pctBar(d.pct) + '</td></tr>';
+            var iz = ITEMZH[d.item] || '';
+        rows += '<tr><td>' + esc(d.item) + (iz ? ' <span style="color:var(--text-dim);font-size:.78rem;">' + esc(iz) + '</span>' : '') + '</td><td style="text-align:center;">' + d.qty + '</td><td>' + pctBar(d.pct) + '</td></tr>';
         }
         var zhName = ZH[name] || '';
         return '<div class="drop-poke"><h4>🐾 ' + esc(name) + (zhName ? ' <span style="color:var(--accent-cyan);font-weight:700;">' + esc(zhName) + '</span>' : '') + '</h4>' +
@@ -166,7 +167,7 @@
             const hits = [];
             for (const n of Object.keys(DB)) {
                 for (const d of DB[n]) {
-                    if (d.item.toLowerCase().includes(q)) { hits.push(n); break; }
+                    if (d.item.toLowerCase().includes(q) || (ITEMZH[d.item] || '').toLowerCase().includes(q)) { hits.push(n); break; }
                 }
             }
             cnt.textContent = '有 ' + hits.length + ' 只宝可梦掉落匹配物品';
@@ -180,10 +181,12 @@
     document.getElementById('tabPoke').onclick = function(){ mode='poke'; this.classList.add('on'); document.getElementById('tabItem').classList.remove('on'); doSearch(); };
     document.getElementById('tabItem').onclick = function(){ mode='item'; this.classList.add('on'); document.getElementById('tabPoke').classList.remove('on'); doSearch(); };
 
+    var ITEMZH = {};
     var ZH = {};
     fetch('drops_data.json').then(function(r){ return r.json(); }).then(function(d){
         DB = d.drops;
         ZH = d.zh || {};
+        ITEMZH = d.item_zh || {};
         document.getElementById('dropCount').textContent = '共 ' + Object.keys(DB).length + ' 只宝可梦，输入关键词开始查询';
     }).catch(function(e){
         document.getElementById('dropCount').textContent = '数据加载失败：' + e;

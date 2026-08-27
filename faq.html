@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社区问答 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+    <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link">对战塔与任务</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li><li><a href="faq.html" class="nav-link active">社区问答</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>💬 COBBLEVERSE COMMUNITY FAQ</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                社区 <span class="gradient-text squiggly-word">问答百科</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                收集自 Reddit r/cobblemon 玩家们最常问的 49 个 How-To 问题与答案——从找道馆、抓裂空座，到刷闪、孵蛋，点开就有答案！
+            </p>
+        </div>
+
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">COMMUNITY FAQ</span>
+                <h2 class="section-title"><span class="icon">🏟️</span> 道馆与等级上限</h2>
+                <p class="section-desc">整理自 r/cobblemon 社区玩家的真实提问与解答。</p>
+            </div>
+            <div class="faq-list">
+                    <details class="faq-item"><summary>找不到道馆怎么办？</summary><div class="faq-ans">用训练师卡查看当前目标和要打的训练家；开局送第一个道馆（尼比）地图；失业村民+制图台可变地图向导村民交易道馆地图；屋顶颜色认路。第一个道馆必须是 Brock。</div></details>
+                    <details class="faq-item"><summary>等级上限卡住不动了？</summary><div class="faq-ans">默认上限 25 级，必须击败馆主/重要训练家逐步突破，每赢一场 +5~10 级，最终 100 级。</div></details>
+                    <details class="faq-item"><summary>打败小刚但等级上限没涨？</summary><div class="faq-ans">需要找 Trainer Association 特殊村民（所有村庄都会刷），对话选择你的系列 (Series) 后上限才会开始提升。</div></details>
+                    <details class="faq-item"><summary>每个馆主的等级上限是多少？</summary><div class="faq-ans">训练师卡会实时显示当前上限和进度；每场馆主/四天王战提升 5~10 级。</div></details>
+                    <details class="faq-item"><summary>能不能跳过等级上限？</summary><div class="faq-ans">开作弊可拿满徽章或直接用 /rctmod player set progress 命令推进（需服务器允许作弊）。</div></details>
+                    <details class="faq-item"><summary>去新地区后等级上限会重置吗？</summary><div class="faq-ans">会。地区进度绑定训练师卡，切到新地区上限按该地区进度重新计算。</div></details>
+                    <details class="faq-item"><summary>馆主没生成/找不到道馆建筑？</summary><div class="faq-ans">地区道馆只在未加载的新区块生成；可 /datapack enable 强制解锁或 /locate 定位。</div></details>
+                    <details class="faq-item"><summary>馆主太难/太弱能改吗？</summary><div class="faq-ans">馆主队伍基本硬编码。加难度可自己把上限设为与馆主最强宝可梦同级，或用 Radical Cobblemon Trainer 自定义队伍。</div></details>
+                    <details class="faq-item"><summary>怎么快速升级？</summary><div class="faq-ans">打高等级野怪（末地高等级未知图腾）、吃稀有糖果、或找朋友的高等级幸福蛋 (Blissey) 对刷。</div></details>
+                    <details class="faq-item"><summary>Blaine/Giovanni 没刷出来？</summary><div class="faq-ans">先确认地区已解锁且区块已加载；不行就 /function setup 或 /datapack enable 强制生成。</div></details>
+                    <details class="faq-item"><summary>打完馆主没掉徽章？</summary><div class="faq-ans">1.7.31 起徽章盒 (Badge Box) 只在馆主首次被击败时掉落，注意别漏捡。</div></details>
+                    <details class="faq-item"><summary>训练师卡有什么用？</summary><div class="faq-ans">显示当前等级上限、地区进度图、下一个要打的训练家，是核心进度工具。</div></details>
+                    <details class="faq-item"><summary>拿了太多徽章会怎样？</summary><div class="faq-ans">进度正常推进；若想跨区提前解锁，可用训练师卡重置或 /rctmod 调整系列。</div></details>
+                    <details class="faq-item"><summary>道馆挑战有顺序要求吗？</summary><div class="faq-ans">有。地区内按馆主顺序推进，击败当前目标后训练师卡会提示下一位。</div></details>
+            </div>
+        </div>
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">COMMUNITY FAQ</span>
+                <h2 class="section-title"><span class="icon">🐉</span> 末地与传说宝可梦</h2>
+                <p class="section-desc">整理自 r/cobblemon 社区玩家的真实提问与解答。</p>
+            </div>
+            <div class="faq-list">
+                    <details class="faq-item"><summary>末地 Boss 是什么？</summary><div class="faq-ans">不是末影龙——是 100 级必闪裂空座 (Shiny Lv100 Rayquaza)！第一次进末地必定刷新。</div></details>
+                    <details class="faq-item"><summary>进末地没看到裂空座？</summary><div class="faq-ans">多人同进可能触发 bug。退出末地执行 /advancement revoke @a only minecraft:story/enter_the_end 再进，或用 /function Cobbleverse:spawn_rayquaza。</div></details>
+                    <details class="faq-item"><summary>裂空座被打死/跑掉后还能再刷吗？</summary><div class="faq-ans">删掉 enter_the_end 成就重新进末地即可再次刷新。</div></details>
+                    <details class="faq-item"><summary>怎么抓 100 级闪光裂空座？</summary><div class="faq-ans">备好大师球或大量高级球+催眠/麻痹状态，抓失败可重进重刷。</div></details>
+                    <details class="faq-item"><summary>不想让末地刷闪光裂空座？</summary><div class="faq-ans">Lumyverse 官方有禁用教程：lumyverse.com/en/cobbleverse/how-to-disable-rayquaza-in-the-end/</div></details>
+                    <details class="faq-item"><summary>裂空座怎么 Mega 进化？</summary><div class="faq-ans">给它学画龙点睛 (Dragon Ascent) 后，宝可梦菜单会出现 Mega 进化按钮。</div></details>
+                    <details class="faq-item"><summary>Eternatus（无极汰那）在哪？</summary><div class="faq-ans">末地 End Barrens 生物群系的地下固体方块上，70~75 级，超稀有生成。</div></details>
+                    <details class="faq-item"><summary>Eternatus Cocoon（无极汰那之茧）怎么找？</summary><div class="faq-ans">集齐 500 伽勒尔粒子后去末地；用宝可梦雷达（需 Locator Chip）+ 末地制图台合成地图定位。</div></details>
+                    <details class="faq-item"><summary>CurseForge 版 Eternatus 怎么刷？</summary><div class="faq-ans">在 End Barrens 用端石搭 3 层 12x12 平台（每层间隔 10 格高）即可满足生成条件。</div></details>
+                    <details class="faq-item"><summary>怎么让 Eternatus 永久极巨化？</summary><div class="faq-ans">给它一个星之核 (Star Core) 道具就能永久保持 Eternamax 形态。</div></details>
+                    <details class="faq-item"><summary>末地还有啥好东西？</summary><div class="faq-ans">Locator Chip（宝可梦雷达材料）藏在试炼密室 (Trial Chambers) 的凶兆宝库 (Ominous Vaults) 里。</div></details>
+                    <details class="faq-item"><summary>末影之眼还有用吗？</summary><div class="faq-ans">有！进末地仍走原版流程：末影之眼找要塞、激活传送门进入。</div></details>
+                    <details class="faq-item"><summary>最强传说宝可梦有哪些？</summary><div class="faq-ans">Mega 裂空座、Zacian、Calyrex 双马合体、Urshifu、Miraidon、原始固拉多/盖欧卡、Xerneas、Chien-Pao、究极奈克洛兹玛等。</div></details>
+                    <details class="faq-item"><summary>有必闪传说召唤道具吗？</summary><div class="faq-ans">有！在 JEI 里搜 Shining / Shiny / Radiant 版召唤道具，可在对应结构召唤闪光传说。</div></details>
+            </div>
+        </div>
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">COMMUNITY FAQ</span>
+                <h2 class="section-title"><span class="icon">🥚</span> 培育、蛋招式与 TM</h2>
+                <p class="section-desc">整理自 r/cobblemon 社区玩家的真实提问与解答。</p>
+            </div>
+            <div class="faq-list">
+                    <details class="faq-item"><summary>怎么孵化宝可梦蛋？</summary><div class="faq-ans">同蛋组、异性两只放牧场，雌性会生蛋——蛋出现在牧场方块背面的巢里。</div></details>
+                    <details class="faq-item"><summary>蛋招式 (Egg Move) 怎么学？</summary><div class="faq-ans">最方便是用 Cobblecuisine 的紫罗兰奶昔 (Deluxe Violet Shake)，一次给 2~3 个蛋招式；或用 Mirror Herb 在牧场复制。</div></details>
+                    <details class="faq-item"><summary>TM 怎么获得？</summary><div class="faq-ans">宝箱、道馆战掉落、TM Craft 合成（空白盘从铜到下界合金）、百货商店购买。</div></details>
+                    <details class="faq-item"><summary>为什么 TM 教不了这个招式？</summary><div class="faq-ans">蛋招式/星招式/导师招式不能靠 TM 学，蛋招式必须用奶昔或繁殖获得。</div></details>
+                    <details class="faq-item"><summary>Mirror Herb 怎么用？</summary><div class="faq-ans">把带目标招式的宝可梦和要学的宝可梦放同一牧场，给要学的带上 Mirror Herb，等几分钟即可复制。</div></details>
+                    <details class="faq-item"><summary>怎么刷高 IV？</summary><div class="faq-ans">繁殖：新蛋随机继承父母 IV，把高 IV 后代继续当父母繁殖，逐代提纯。</div></details>
+                    <details class="faq-item"><summary>牧场里的蛋按钮是干嘛的？</summary><div class="faq-ans">那是禁用繁殖的开关，开启后该牧场不再生蛋。</div></details>
+                    <details class="faq-item"><summary>怎么改特性？</summary><div class="faq-ans">能力胶囊改普通特性，能力补丁改隐藏特性。</div></details>
+                    <details class="faq-item"><summary>繁殖生出来是谁？</summary><div class="faq-ans">永远是雌性那一方的物种。</div></details>
+                    <details class="faq-item"><summary>跨种繁殖能学专属招式？</summary><div class="faq-ans">同蛋组跨种繁殖，后代可能遗传平时学不到的专属蛋招式。</div></details>
+                    <details class="faq-item"><summary>TM Craft 空白盘怎么用？</summary><div class="faq-ans">空白盘可复制队伍里另一只宝可梦的招式；招式越强所需空白盘等级越高。</div></details>
+                    <details class="faq-item"><summary>怎么整理/删除招式？</summary><div class="faq-ans">在宝可梦可回忆招式列表中整理腾位，回忆列表也在那里。</div></details>
+            </div>
+        </div>
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">COMMUNITY FAQ</span>
+                <h2 class="section-title"><span class="icon">✨</span> 闪光与刷闪</h2>
+                <p class="section-desc">整理自 r/cobblemon 社区玩家的真实提问与解答。</p>
+            </div>
+            <div class="faq-list">
+                    <details class="faq-item"><summary>Cobbleverse 闪率是多少？</summary><div class="faq-ans">约 1/2048（比现代游戏 1/4096 更高）；可在模组设置里搜 shiny 查看具体数值。</div></details>
+                    <details class="faq-item"><summary>怎么刷闪最快？</summary><div class="faq-ans">跑图/飞行触发新刷怪 + 香薰料理加成 + 繁殖；装 Cobblemon Spawn Notification 模组提示稀有刷怪。</div></details>
+                    <details class="faq-item"><summary>有闪光化石吗？</summary><div class="faq-ans">有，洞穴生物群系里的化石和普通宝可梦一样有闪率。</div></details>
+                    <details class="faq-item"><summary>香薰怎么提升闪率？</summary><div class="faq-ans">Cobblecuisine 的香薰类消耗品叠加提升刷怪闪率，PokéNav 上能看到加成百分比。</div></details>
+                    <details class="faq-item"><summary>服务器怎么提示稀有刷怪？</summary><div class="faq-ans">给客户端/服务端加 Cobblemon Spawn Notification 模组即可。</div></details>
+                    <details class="faq-item"><summary>刷闪要一直跑吗？</summary><div class="faq-ans">跑动/飞行刷新新区块；也可建矿车轨道 AFK 挂机刷。</div></details>
+                    <details class="faq-item"><summary>PokéNav 显示什么？</summary><div class="faq-ans">显示当前香薰/料理的闪率与刷怪加成，方便判断要不要补消耗品。</div></details>
+                    <details class="faq-item"><summary>必闪裂空座算闪光吗？</summary><div class="faq-ans">算！100 级必闪是 Cobbleverse 的福利，抓到的就是真·闪光裂空座。</div></details>
+                    <details class="faq-item"><summary>怎么知道某宝可梦在哪刷？</summary><div class="faq-ans">右键 PokéSnack 查看激活后的生成概率；Lumyverse 官网也有全宝可梦刷怪表。</div></details>
+            </div>
+        </div>
+
+        <div class="callout callout-info" style="margin-bottom: 30px;">
+            <div class="callout-icon">📌</div>
+            <div class="callout-content">
+                <div class="callout-title">资料说明</div>
+                <p style="font-size:0.9rem; margin-top:4px;">
+                    以上内容整理自 Reddit r/cobblemon 社区（2026 年 8 月）及 Lumyverse 官方 Wiki。版本更新可能导致机制变动，以游戏内实际为准。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
+                <a href="cobbleverse.html" class="footer-link">Cobbleverse</a>
+                <a href="battletower.html" class="footer-link">对战塔与任务</a>
+                <a href="faq.html" class="footer-link">社区问答</a>
+                <a href="guide.html" class="footer-link">新手 FAQ</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=8"></script>
+</body>
+</html>

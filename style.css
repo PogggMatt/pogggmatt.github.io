@@ -602,3 +602,13 @@ kbd {
     .grid-3, .grid-2 { border: none; background: none; gap: 14px; }
 }
 
+
+/* ===== FAQ 折叠 ===== */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item { border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; background: rgba(255,255,255,0.04); overflow: hidden; transition: border-color .2s; }
+.faq-item:hover { border-color: rgba(255,255,255,0.25); }
+.faq-item summary { cursor: pointer; list-style: none; padding: 12px 16px; font-size: 0.95rem; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 10px; user-select: none; }
+.faq-item summary::before { content: "▸"; color: var(--accent-cyan); transition: transform .2s; font-size: 0.85rem; }
+.faq-item[open] summary::before { transform: rotate(90deg); }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-ans { padding: 0 16px 14px 36px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }

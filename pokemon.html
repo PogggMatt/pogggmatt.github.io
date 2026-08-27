@@ -95,14 +95,14 @@
                 <h2 class="section-title"><span class="icon">🔍</span> 掉落 · 生成 查询</h2>
             </div>
             <div class="pk-search">
-                <input id="pkInput" type="text" placeholder="搜啥都行：皮卡丘 / Charizard / 奇迹种子 / 丛林 / Jungle…" autocomplete="off">
+                <input id="pkInput" type="text" placeholder="搜啥都行：皮卡丘 / Charizard / 奇迹种子 / 丛林 / Jungle / 超稀有…" autocomplete="off">
             </div>
             <div class="rarity-chips">
                 <button class="rchip on" data-r="all">全部稀有度</button>
-                <button class="rchip" data-r="Common">Common</button>
-                <button class="rchip" data-r="Uncommon">Uncommon</button>
-                <button class="rchip" data-r="Rare">Rare</button>
-                <button class="rchip" data-r="Ultra-Rare">Ultra-Rare</button>
+                <button class="rchip" data-r="Common">常见</button>
+                <button class="rchip" data-r="Uncommon">罕见</button>
+                <button class="rchip" data-r="Rare">稀有</button>
+                <button class="rchip" data-r="Ultra-Rare">超稀有</button>
             </div>
             <div id="pkCount" class="hit-note">数据加载中…</div>
             <div id="pkResult"></div>
@@ -153,6 +153,11 @@
         return '<div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;"><span>' + p + '%</span><span class="pct-bar" style="width:' + (w*2) + 'px;"></span></div>';
     }
 
+    function zhRarity(r) {
+        const m = {'Common':'常见','Uncommon':'罕见','Rare':'稀有','Ultra-Rare':'超稀有'};
+        return String(r || '').split('/').map(function(x){ return m[x.trim()] || x; }).join('/');
+    }
+
     function rarityCls(r) {
         r = (r || '').toLowerCase();
         if (r.indexOf('ultra') >= 0) return 'rar-ultra';
@@ -188,8 +193,8 @@
         // 生成信息
         const r = s.rarity || '';
         let sm = '<div class="pk-block"><h5>🌍 生成</h5><div class="spawn-meta">';
-        sm += '<div class="row"><span class="k">群系</span><span>' + esc(s.spawn || '未知') + '</span></div>';
-        if (r) sm += '<div class="row"><span class="k">稀有度</span><span class="rarity-tag ' + rarityCls(r) + '">' + esc(r) + '</span></div>';
+        sm += '<div class="row"><span class="k">群系</span><span>' + esc(s.spawn_zh || s.spawn || '未知') + '</span></div>';
+        if (r) sm += '<div class="row"><span class="k">稀有度</span><span class="rarity-tag ' + rarityCls(r) + '">' + esc(zhRarity(r)) + '</span></div>';
         if (s.condition) sm += '<div class="row"><span class="k">条件</span><span>' + esc(s.condition) + '</span></div>';
         if (s.forms) sm += '<div class="row"><span class="k">形态</span><span>' + esc(s.forms) + '</span></div>';
         sm += '</div></div>';
@@ -211,7 +216,7 @@
             const s = DB[n];
             if (!matchRarity(s.rarity)) return false;
             if (n.toLowerCase().includes(q) || (s.zh || '').toLowerCase().includes(q)) return true;
-            if ((s.spawn || '').toLowerCase().includes(q)) return true;
+            if ((s.spawn || '').toLowerCase().includes(q) || (s.spawn_zh || '').toLowerCase().includes(q)) return true;
             if (s.drops) {
                 for (const d of s.drops) {
                     if (d.item.toLowerCase().includes(q) || (ITEMZH[d.item] || '').toLowerCase().includes(q)) return true;

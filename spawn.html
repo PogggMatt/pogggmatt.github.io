@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成查询 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=9">
+    <style>
+        .spawn-search { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+        .spawn-search input { flex:1; min-width:220px; padding:12px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.15);
+            background:rgba(255,255,255,.06); color:var(--text); font-size:1rem; outline:none; }
+        .spawn-search input:focus { border-color:var(--accent-cyan); }
+        .spawn-tabs { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+        .spawn-tab { padding:7px 16px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;
+            border:1px solid rgba(255,255,255,.15); color:var(--text-muted); background:transparent; transition:all .2s; }
+        .spawn-tab.on { background:var(--accent-cyan); color:#062630; border-color:transparent; }
+        .rarity-chips { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+        .rchip { padding:5px 13px; border-radius:999px; cursor:pointer; font-size:.78rem; font-weight:600;
+            border:1px solid rgba(255,255,255,.15); color:var(--text-muted); background:transparent; transition:all .2s; }
+        .rchip.on { border-color:var(--accent-cyan); color:var(--accent-cyan); }
+        .spawn-card { border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px 16px; margin-bottom:12px;
+            background:rgba(255,255,255,.04); }
+        .spawn-card h4 { margin:0 0 10px; font-size:1.02rem; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+        .spawn-card h4 .n { color:var(--text-dim); font-size:.75rem; font-weight:400; }
+        .spawn-meta { display:flex; flex-direction:column; gap:6px; font-size:.88rem; color:var(--text-muted); }
+        .spawn-meta .row { display:flex; gap:8px; align-items:flex-start; }
+        .spawn-meta .k { color:var(--text-dim); flex-shrink:0; min-width:52px; font-size:.78rem; padding-top:2px; }
+        .rarity-tag { display:inline-block; padding:2px 10px; border-radius:999px; font-size:.74rem; font-weight:700; }
+        .rar-ultra { background:rgba(255,215,0,.15); color:#ffd700; border:1px solid rgba(255,215,0,.35); }
+        .rar-rare { background:rgba(192,132,252,.15); color:#c084fc; border:1px solid rgba(192,132,252,.35); }
+        .rar-uncommon { background:rgba(125,211,252,.13); color:#7dd3fc; border:1px solid rgba(125,211,252,.3); }
+        .rar-common { background:rgba(148,163,184,.13); color:#94a3b8; border:1px solid rgba(148,163,184,.3); }
+        .hit-note { font-size:.82rem; color:var(--text-dim); margin-bottom:14px; }
+        .empty-hint { color:var(--text-dim); padding:10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+    <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link">对战塔与任务</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li><li><a href="drops.html" class="nav-link">掉落查询</a></li><li><a href="spawn.html" class="nav-link active">生成查询</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>🌍 POKÉMON SPAWN DATABASE</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                宝可梦 <span class="gradient-text squiggly-word">生成查询</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                全服 <strong>1025 只</strong>宝可梦的生成地点数据库，按<strong>群系</strong>或<strong>宝可梦</strong>查询刷新位置——搜 丛林 / Jungle / 皮卡丘 / Charizard 都行！
+            </p>
+        </div>
+
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">SPAWN LOOKUP</span>
+                <h2 class="section-title"><span class="icon">🔍</span> 刷新群系查询</h2>
+            </div>
+            <div class="spawn-search">
+                <input id="spawnInput" type="text" placeholder="搜宝可梦或群系都行，如 丛林 / Jungle / 妙蛙种子 / Garchomp…" autocomplete="off">
+            </div>
+            <div class="rarity-chips">
+                <button class="rchip on" data-r="all">全部稀有度</button>
+                <button class="rchip" data-r="Common">Common</button>
+                <button class="rchip" data-r="Uncommon">Uncommon</button>
+                <button class="rchip" data-r="Rare">Rare</button>
+                <button class="rchip" data-r="Ultra-Rare">Ultra-Rare</button>
+            </div>
+            <div id="spawnCount" class="hit-note">数据加载中…</div>
+            <div id="spawnResult"></div>
+        </div>
+
+        <div class="callout callout-info" style="margin-bottom: 30px;">
+            <div class="callout-icon">📌</div>
+            <div class="callout-content">
+                <div class="callout-title">数据说明</div>
+                <p style="font-size:0.9rem; margin-top:4px;">
+                    数据来源：Lumyverse Wiki「All Pokémon Spawn in COBBLEVERSE」。群系为刷新条件，「条件」列含天气、时间或特殊地点等额外要求。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
+                <a href="cobbleverse.html" class="footer-link">Cobbleverse</a>
+                <a href="battletower.html" class="footer-link">对战塔与任务</a>
+                <a href="drops.html" class="footer-link">掉落查询</a>
+                <a href="spawn.html" class="footer-link">生成查询</a>
+                <a href="guide.html" class="footer-link">新手百科</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=9"></script>
+    <script>
+    let DB = {};
+    let ZH = {};
+    let rarityF = 'all';
+
+    function esc(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function rarityCls(r) {
+        r = (r || '').toLowerCase();
+        if (r.indexOf('ultra') >= 0) return 'rar-ultra';
+        if (r.indexOf('rare') >= 0) return 'rar-rare';
+        if (r.indexOf('uncommon') >= 0) return 'rar-uncommon';
+        return 'rar-common';
+    }
+
+    function spawnCard(name) {
+        const s = DB[name];
+        if (!s) return '';
+        const zhName = ZH[name] || '';
+        const r = s.rarity || '?';
+        let rows = '<div class="spawn-meta">';
+        rows += '<div class="row"><span class="k">群系</span><span>' + esc(s.spawn || '未知') + '</span></div>';
+        rows += '<div class="row"><span class="k">稀有度</span><span class="rarity-tag ' + rarityCls(r) + '">' + esc(r || '未知') + '</span></div>';
+        if (s.condition) rows += '<div class="row"><span class="k">条件</span><span>' + esc(s.condition) + '</span></div>';
+        if (s.forms) rows += '<div class="row"><span class="k">形态</span><span>' + esc(s.forms) + '</span></div>';
+        rows += '</div>';
+        return '<div class="spawn-card"><h4>🐾 ' + esc(name) + (zhName ? ' <span style="color:var(--accent-cyan);font-weight:700;">' + esc(zhName) + '</span>' : '') + ' <span class="n">' + esc(s.num || '') + '</span></h4>' + rows + '</div>';
+    }
+
+    function matchRarity(r) {
+        if (rarityF === 'all') return true;
+        return (r || '').toLowerCase().indexOf(rarityF.toLowerCase()) >= 0;
+    }
+
+    function doSearch() {
+        const q = document.getElementById('spawnInput').value.trim().toLowerCase();
+        const cnt = document.getElementById('spawnCount');
+        const el = document.getElementById('spawnResult');
+        const names = Object.keys(DB);
+        if (!q) {
+            cnt.textContent = '共 ' + names.length + ' 只宝可梦，输入关键词开始查询（可按群系或宝可梦）';
+            el.innerHTML = '';
+            return;
+        }
+        const pokeHits = names.filter(n => (n.toLowerCase().includes(q) || (ZH[n] || '').toLowerCase().includes(q)) && matchRarity(DB[n].rarity));
+        const biomeHits = names.filter(n => {
+            if (!matchRarity(DB[n].rarity)) return false;
+            return (DB[n].spawn || '').toLowerCase().includes(q);
+        });
+        const hits = pokeHits.concat(biomeHits.filter(n => pokeHits.indexOf(n) < 0));
+        cnt.textContent = '匹配 ' + hits.length + ' 只宝可梦';
+        if (!hits.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～试试搜宝可梦名，或 Jungle / Ocean / Nether 等群系关键词？</p>'; return; }
+        el.innerHTML = hits.slice(0, 80).map(spawnCard).join('')
+            + (hits.length > 80 ? '<p class="empty-hint">结果较多，只显示前 80 只，请缩小关键词～</p>' : '');
+    }
+
+    document.getElementById('spawnInput').addEventListener('input', doSearch);
+
+    document.querySelectorAll('.rchip').forEach(function(btn){
+        btn.onclick = function(){
+            document.querySelectorAll('.rchip').forEach(function(b){ b.classList.remove('on'); });
+            this.classList.add('on');
+            rarityF = this.getAttribute('data-r');
+            doSearch();
+        };
+    });
+
+    fetch('spawn_data.json').then(function(r){ return r.json(); }).then(function(d){
+        DB = d.spawns;
+        ZH = d.zh || {};
+        document.getElementById('spawnCount').textContent = '共 ' + Object.keys(DB).length + ' 只宝可梦，输入关键词开始查询';
+    }).catch(function(e){
+        document.getElementById('spawnCount').textContent = '数据加载失败：' + e;
+    });
+    </script>
+</body>
+</html>

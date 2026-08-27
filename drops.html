@@ -51,7 +51,7 @@
         </div>
         <div class="menubar">
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link">对战塔与任务</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li><li><a href="drops.html" class="nav-link active">掉落查询</a></li>
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link">对战塔与任务</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li><li><a href="drops.html" class="nav-link active">掉落查询</a></li><li><a href="spawn.html" class="nav-link">生成查询</a></li>
             </ul>
             <div class="nav-action">
                 <button class="btn-ip-copy" onclick="copyServerIP()">
@@ -83,9 +83,7 @@
                 <h2 class="section-title"><span class="icon">🔍</span> 快速查询</h2>
             </div>
             <div class="drop-search">
-                <input id="dropInput" type="text" placeholder="输入宝可梦名或物品名（中英文都行），如 皮卡丘 / Charizard / Charcoal Stick…" autocomplete="off">
-                <button class="drop-tab on" id="tabPoke">按宝可梦</button>
-                <button class="drop-tab" id="tabItem">按物品</button>
+                <input id="dropInput" type="text" placeholder="搜宝可梦或掉落物都行，如 皮卡丘 / 奇迹种子 / Charizard / Charcoal Stick…" autocomplete="off">
             </div>
             <div id="dropCount" class="hit-note">数据加载中…</div>
             <div id="dropResult"></div>
@@ -117,6 +115,7 @@
                 <a href="cobbleverse.html" class="footer-link">Cobbleverse</a>
                 <a href="battletower.html" class="footer-link">对战塔与任务</a>
                 <a href="drops.html" class="footer-link">掉落查询</a>
+                <a href="spawn.html" class="footer-link">生成查询</a>
                 <a href="guide.html" class="footer-link">新手百科</a>
             </div>
         </div>
@@ -124,7 +123,6 @@
     <script src="script.js?v=9"></script>
     <script>
     let DB = {};
-    let mode = 'poke';
 
     function esc(s) {
         return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -157,29 +155,22 @@
             el.innerHTML = '';
             return;
         }
-        if (mode === 'poke') {
-            const names = Object.keys(DB).filter(n => n.toLowerCase().includes(q) || (ZH[n] || '').toLowerCase().includes(q));
-            cnt.textContent = '匹配 ' + names.length + ' 只宝可梦';
-            if (!names.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
-            el.innerHTML = names.slice(0, 80).map(pokeCard).join('')
-                + (names.length > 80 ? '<p class="empty-hint">结果较多，只显示前 80 只，请缩小关键词～</p>' : '');
-        } else {
-            const hits = [];
-            for (const n of Object.keys(DB)) {
-                for (const d of DB[n]) {
-                    if (d.item.toLowerCase().includes(q) || (ITEMZH[d.item] || '').toLowerCase().includes(q)) { hits.push(n); break; }
-                }
+        const names = Object.keys(DB);
+        const pokeHits = names.filter(n => n.toLowerCase().includes(q) || (ZH[n] || '').toLowerCase().includes(q));
+        const itemHits = names.filter(n => {
+            for (const d of DB[n]) {
+                if (d.item.toLowerCase().includes(q) || (ITEMZH[d.item] || '').toLowerCase().includes(q)) return true;
             }
-            cnt.textContent = '有 ' + hits.length + ' 只宝可梦掉落匹配物品';
-            if (!hits.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
-            el.innerHTML = hits.slice(0, 60).map(pokeCard).join('')
-                + (hits.length > 60 ? '<p class="empty-hint">结果较多，只显示前 60 只，请缩小关键词～</p>' : '');
-        }
+            return false;
+        });
+        const hits = pokeHits.concat(itemHits.filter(n => pokeHits.indexOf(n) < 0));
+        cnt.textContent = '匹配 ' + hits.length + ' 只宝可梦';
+        if (!hits.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
+        el.innerHTML = hits.slice(0, 80).map(pokeCard).join('')
+            + (hits.length > 80 ? '<p class="empty-hint">结果较多，只显示前 80 只，请缩小关键词～</p>' : '');
     }
 
     document.getElementById('dropInput').addEventListener('input', doSearch);
-    document.getElementById('tabPoke').onclick = function(){ mode='poke'; this.classList.add('on'); document.getElementById('tabItem').classList.remove('on'); doSearch(); };
-    document.getElementById('tabItem').onclick = function(){ mode='item'; this.classList.add('on'); document.getElementById('tabPoke').classList.remove('on'); doSearch(); };
 
     var ITEMZH = {};
     var ZH = {};

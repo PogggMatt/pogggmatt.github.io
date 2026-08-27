@@ -73,7 +73,7 @@
                 宝可梦 <span class="gradient-text squiggly-word">掉落查询</span>
             </h1>
             <p class="hero-subtitle" style="margin-bottom: 20px;">
-                全服 <strong>1098 只</strong>宝可梦的击杀掉落物数据库——搜宝可梦名看掉落，或搜物品名反查谁掉！
+                全服 <strong>1098 只</strong>宝可梦的击杀掉落物数据库，<strong>中英双语</strong>查询——搜中文名（如 皮卡丘）或英文名都行！
             </p>
         </div>
 
@@ -83,7 +83,7 @@
                 <h2 class="section-title"><span class="icon">🔍</span> 快速查询</h2>
             </div>
             <div class="drop-search">
-                <input id="dropInput" type="text" placeholder="输入宝可梦名或物品名，如 Charizard / Charcoal Stick…" autocomplete="off">
+                <input id="dropInput" type="text" placeholder="输入宝可梦名或物品名（中英文都行），如 皮卡丘 / Charizard / Charcoal Stick…" autocomplete="off">
                 <button class="drop-tab on" id="tabPoke">按宝可梦</button>
                 <button class="drop-tab" id="tabItem">按物品</button>
             </div>
@@ -142,7 +142,8 @@
         for (const d of ds) {
             rows += '<tr><td>' + esc(d.item) + '</td><td style="text-align:center;">' + d.qty + '</td><td>' + pctBar(d.pct) + '</td></tr>';
         }
-        return '<div class="drop-poke"><h4>🐾 ' + esc(name) + '</h4>' +
+        var zhName = ZH[name] || '';
+        return '<div class="drop-poke"><h4>🐾 ' + esc(name) + (zhName ? ' <span style="color:var(--accent-cyan);font-weight:700;">' + esc(zhName) + '</span>' : '') + '</h4>' +
             '<table class="drop-table"><tr style="color:var(--text-dim);"><td style="width:45%;">掉落物品</td><td style="width:15%;text-align:center;">数量</td><td style="width:40%;text-align:right;">概率</td></tr>' + rows + '</table></div>';
     }
 
@@ -156,7 +157,7 @@
             return;
         }
         if (mode === 'poke') {
-            const names = Object.keys(DB).filter(n => n.toLowerCase().includes(q));
+            const names = Object.keys(DB).filter(n => n.toLowerCase().includes(q) || (ZH[n] || '').toLowerCase().includes(q));
             cnt.textContent = '匹配 ' + names.length + ' 只宝可梦';
             if (!names.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
             el.innerHTML = names.slice(0, 80).map(pokeCard).join('')
@@ -179,8 +180,10 @@
     document.getElementById('tabPoke').onclick = function(){ mode='poke'; this.classList.add('on'); document.getElementById('tabItem').classList.remove('on'); doSearch(); };
     document.getElementById('tabItem').onclick = function(){ mode='item'; this.classList.add('on'); document.getElementById('tabPoke').classList.remove('on'); doSearch(); };
 
+    var ZH = {};
     fetch('drops_data.json').then(function(r){ return r.json(); }).then(function(d){
         DB = d.drops;
+        ZH = d.zh || {};
         document.getElementById('dropCount').textContent = '共 ' + Object.keys(DB).length + ' 只宝可梦，输入关键词开始查询';
     }).catch(function(e){
         document.getElementById('dropCount').textContent = '数据加载失败：' + e;

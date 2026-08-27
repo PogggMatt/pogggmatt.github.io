@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掉落查询 | 傻鸟宝可梦 SMP Wiki</title>
+    <link rel="stylesheet" href="style.css?v=9">
+    <style>
+        .drop-search { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+        .drop-search input { flex:1; min-width:220px; padding:12px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.15);
+            background:rgba(255,255,255,.06); color:var(--text); font-size:1rem; outline:none; }
+        .drop-search input:focus { border-color:var(--accent-cyan); }
+        .drop-tabs { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+        .drop-tab { padding:7px 16px; border-radius:999px; cursor:pointer; font-size:.85rem; font-weight:600;
+            border:1px solid rgba(255,255,255,.15); color:var(--text-muted); background:transparent; transition:all .2s; }
+        .drop-tab.on { background:var(--accent-cyan); color:#062630; border-color:transparent; }
+        .drop-poke { border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:14px 16px; margin-bottom:12px;
+            background:rgba(255,255,255,.04); }
+        .drop-poke h4 { margin:0 0 10px; font-size:1.02rem; display:flex; align-items:center; gap:8px; }
+        .drop-poke h4 .n { color:var(--text-dim); font-size:.75rem; font-weight:400; }
+        .drop-table { width:100%; border-collapse:collapse; font-size:.88rem; }
+        .drop-table td { padding:6px 10px; border-top:1px solid rgba(255,255,255,.07); color:var(--text-muted); }
+        .drop-table td:first-child { color:var(--text); font-weight:600; }
+        .drop-table td:last-child { text-align:right; white-space:nowrap; }
+        .pct-bar { display:inline-block; height:6px; border-radius:3px; background:var(--accent-cyan); vertical-align:middle; margin-left:8px; }
+        .hit-note { font-size:.82rem; color:var(--text-dim); margin-bottom:14px; }
+        .empty-hint { color:var(--text-dim); padding:10px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="fixed-bg"></div>
+    <svg class="squiggly-defs" aria-hidden="true">
+        <filter id="squiggly-filter" x="-15%" y="-25%" width="130%" height="150%">
+            <feTurbulence id="squiggly-turb" type="fractalNoise" baseFrequency="0.015 0.015" numOctaves="3" seed="0" result="noise"/>
+            <feDisplacementMap id="squiggly-disp" in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+    </svg>
+    <header class="navbar">
+        <div class="titlebar">
+            <a href="index.html" class="titlebar-left">
+                <div class="brand-badge"><img src="Wheel_icon.png" alt="Wheel" class="brand-icon"></div>
+                <span class="brand-title">傻鸟宝可梦 SMP</span>
+                <span class="brand-tag">Fabric 1.21.1</span>
+            </a>
+            <div class="window-controls">
+                <button class="win-btn" title="最小化" onclick="winFake('min')">─</button>
+                <button class="win-btn" title="最大化" onclick="winFake('max')">▢</button>
+                <button class="win-btn win-close" title="关闭" onclick="winFake('close')">✕</button>
+            </div>
+        </div>
+        <div class="menubar">
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">首页</a></li><li><a href="gacha.html" class="nav-link">转盘抽卡</a></li><li><a href="world.html" class="nav-link">世界与传送</a></li><li><a href="lumymon.html" class="nav-link">LumyMon</a></li><li><a href="cobblesafari.html" class="nav-link">CobbleSafari</a></li><li><a href="cobbleverse.html" class="nav-link">Cobbleverse</a></li><li><a href="battletower.html" class="nav-link">对战塔与任务</a></li><li><a href="tutorial.html" class="nav-link">安装教程</a></li><li><a href="guide.html" class="nav-link">新手百科</a></li><li><a href="faq.html" class="nav-link">社区问答</a></li><li><a href="drops.html" class="nav-link active">掉落查询</a></li>
+            </ul>
+            <div class="nav-action">
+                <button class="btn-ip-copy" onclick="copyServerIP()">
+                    <span>🎮</span>
+                    <span class="ip-text">shaniao.usga.me</span>
+                    <span style="font-size:0.75rem; opacity:0.8;">(点击复制)</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-section page-hero" style="padding: 30px 0 20px;">
+            <div class="hero-pill">
+                <span>💎 POKÉMON DROP DATABASE</span>
+            </div>
+            <h1 class="hero-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px;">
+                宝可梦 <span class="gradient-text squiggly-word">掉落查询</span>
+            </h1>
+            <p class="hero-subtitle" style="margin-bottom: 20px;">
+                全服 <strong>1098 只</strong>宝可梦的击杀掉落物数据库——搜宝可梦名看掉落，或搜物品名反查谁掉！
+            </p>
+        </div>
+
+        <div class="glass-panel" style="margin-bottom: 30px;">
+            <div class="section-header">
+                <span class="section-tag">DROP LOOKUP</span>
+                <h2 class="section-title"><span class="icon">🔍</span> 快速查询</h2>
+            </div>
+            <div class="drop-search">
+                <input id="dropInput" type="text" placeholder="输入宝可梦名或物品名，如 Charizard / Charcoal Stick…" autocomplete="off">
+                <button class="drop-tab on" id="tabPoke">按宝可梦</button>
+                <button class="drop-tab" id="tabItem">按物品</button>
+            </div>
+            <div id="dropCount" class="hit-note">数据加载中…</div>
+            <div id="dropResult"></div>
+        </div>
+
+        <div class="callout callout-info" style="margin-bottom: 30px;">
+            <div class="callout-icon">📌</div>
+            <div class="callout-content">
+                <div class="callout-title">数据说明</div>
+                <p style="font-size:0.9rem; margin-top:4px;">
+                    数据来源：服务器掉落表（Google Sheets 实时同步）。概率为击杀掉落概率，数量为每次掉落范围。掉落物需在宝可梦附近拾取。
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div style="font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 6px;">傻鸟宝可梦 SMP (Shaniao SMP)</div>
+                <div class="footer-meta">Minecraft 1.21.1 Fabric • Powered by Cobbleverse & LumyMon Ecosystem</div>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="footer-link">首页</a>
+                <a href="gacha.html" class="footer-link">抽卡维基</a>
+                <a href="world.html" class="footer-link">剧情地图</a>
+                <a href="lumymon.html" class="footer-link">LumyMon</a>
+                <a href="cobblesafari.html" class="footer-link">CobbleSafari</a>
+                <a href="cobbleverse.html" class="footer-link">Cobbleverse</a>
+                <a href="battletower.html" class="footer-link">对战塔与任务</a>
+                <a href="drops.html" class="footer-link">掉落查询</a>
+                <a href="guide.html" class="footer-link">新手百科</a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js?v=9"></script>
+    <script>
+    let DB = {};
+    let mode = 'poke';
+
+    function esc(s) {
+        return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    function pctBar(p) {
+        const w = Math.min(100, p).toFixed(0);
+        return '<div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;"><span>' + p + '%</span><span class="pct-bar" style="width:' + (w*2) + 'px;"></span></div>';
+    }
+
+    function pokeCard(name) {
+        const ds = DB[name] || [];
+        if (!ds.length) return '';
+        let rows = '';
+        for (const d of ds) {
+            rows += '<tr><td>' + esc(d.item) + '</td><td style="text-align:center;">' + d.qty + '</td><td>' + pctBar(d.pct) + '</td></tr>';
+        }
+        return '<div class="drop-poke"><h4>🐾 ' + esc(name) + '</h4>' +
+            '<table class="drop-table"><tr style="color:var(--text-dim);"><td style="width:45%;">掉落物品</td><td style="width:15%;text-align:center;">数量</td><td style="width:40%;text-align:right;">概率</td></tr>' + rows + '</table></div>';
+    }
+
+    function doSearch() {
+        const q = document.getElementById('dropInput').value.trim().toLowerCase();
+        const cnt = document.getElementById('dropCount');
+        const el = document.getElementById('dropResult');
+        if (!q) {
+            cnt.textContent = '共 ' + Object.keys(DB).length + ' 只宝可梦，输入关键词开始查询';
+            el.innerHTML = '';
+            return;
+        }
+        if (mode === 'poke') {
+            const names = Object.keys(DB).filter(n => n.toLowerCase().includes(q));
+            cnt.textContent = '匹配 ' + names.length + ' 只宝可梦';
+            if (!names.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
+            el.innerHTML = names.slice(0, 80).map(pokeCard).join('')
+                + (names.length > 80 ? '<p class="empty-hint">结果较多，只显示前 80 只，请缩小关键词～</p>' : '');
+        } else {
+            const hits = [];
+            for (const n of Object.keys(DB)) {
+                for (const d of DB[n]) {
+                    if (d.item.toLowerCase().includes(q)) { hits.push(n); break; }
+                }
+            }
+            cnt.textContent = '有 ' + hits.length + ' 只宝可梦掉落匹配物品';
+            if (!hits.length) { el.innerHTML = '<p class="empty-hint">没有匹配结果～换个关键词试试？</p>'; return; }
+            el.innerHTML = hits.slice(0, 60).map(pokeCard).join('')
+                + (hits.length > 60 ? '<p class="empty-hint">结果较多，只显示前 60 只，请缩小关键词～</p>' : '');
+        }
+    }
+
+    document.getElementById('dropInput').addEventListener('input', doSearch);
+    document.getElementById('tabPoke').onclick = function(){ mode='poke'; this.classList.add('on'); document.getElementById('tabItem').classList.remove('on'); doSearch(); };
+    document.getElementById('tabItem').onclick = function(){ mode='item'; this.classList.add('on'); document.getElementById('tabPoke').classList.remove('on'); doSearch(); };
+
+    fetch('drops_data.json').then(function(r){ return r.json(); }).then(function(d){
+        DB = d.drops;
+        document.getElementById('dropCount').textContent = '共 ' + Object.keys(DB).length + ' 只宝可梦，输入关键词开始查询';
+    }).catch(function(e){
+        document.getElementById('dropCount').textContent = '数据加载失败：' + e;
+    });
+    </script>
+</body>
+</html>
